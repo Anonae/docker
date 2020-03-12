@@ -8,6 +8,7 @@ RUN	\
 	rm -rf docker && \
 	mkdir docker && \
 	cd /home/docker && \
-	git clone https://github.com/Anonae/docker
+	git clone https://github.com/Anonae/docker && \
+	cd /home/docker/docker
 	#git pull https://github.com/Anonae/docker \
 COPY . /var/www/html
