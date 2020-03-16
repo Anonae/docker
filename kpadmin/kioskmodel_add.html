@@ -1,0 +1,207 @@
+<!-- Start Content -->
+<style>
+   .text-help { font-size: 11px; font-weight: 400; color: #ff5722; }
+
+</style>
+<!--start Breadcrumb-->
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb" >
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="cpanel/kioskmodel/lists" class="alink" >Kiosk Model</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Kiosk Model <b>Add</b></h2>
+      </div><!--/col-->
+   </div><!--/content-title-->
+</div><!--/row-->
+
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">เพิ่มข้อมูล Model kiosk<b class="text-green">ใหม่ !!!</b></p>
+         </div><!--/x_title-->
+
+         <div class="x_content">
+            <form id="addKioskModel" class="form-horizontal form-label-left" method="POST" data-parsley-validate="" novalidate="">
+               <input type="hidden" name="action" value="addCAT">
+               <input id="bywho" name="bywho" value="" style="display:none;">
+               <input id="when" name="when" value="2019-06-14 16:17:41" style="display:none;">
+
+               <div class="row">
+
+                  <div class="col col-md-3 col-sm-4 col-xs-12 col-image">
+                    	<div class="form-group text-center">
+                        <img id="preview" src="" class="img-responsive kioskmodel_model_image" style="max-height:300px; margin:0 auto;">
+
+                        <div style=" width:100%; margin-top:30px; padding:10px; border:1px solid #e6ecf5; border-radius: 2px; overflow:hidden;">
+                           <input type="file" name="previewimage" id="previewimage">
+                           <input id="image" name="image" value=""  style="display:none;" />
+                        </div>
+                        <!--                        <i class="fa fa-fw fa-book" style=" font-size:12vw; margin:0 auto;"></i>-->
+                     </div>
+                  </div><!--/col-->
+
+                  <div class="col col-md-9 col-sm-8 col-xs-12">
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span>Model Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12" type="text" id="name" name="name" value="" required="required">
+                           <div  class="chk_name text-help "></div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Placement</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12" type="text" id="placement" name="placement" value="" required="required">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Slot amount</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12" type="text" id="slot" name="slot" value="" required="required">
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <textarea class="resizable_textarea form-control" rows="3" id="description" name="description"></textarea>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="status"  class="product_status form-control input-sm selectpicker selectCustomW100">
+                              <option value="1">เปิดการใช้งาน</option>
+                              <option value="0">ปิดการใช้งาน</option>
+                           </select>
+
+                        </div>
+                     </div>
+
+                  </div><!--/col-->
+
+               </div><!--/row-->
+
+               <div class="row">
+                  <div class="ln_solid"></div>
+                  <div class="col-md-3 col-sm-6 col-xs-12"><a href="/cpanel/kioskmodel/lists" class="alink btn btn-default btn-lg btn-block">Back</a></div>
+                  <div class="col-md-9 col-sm-6 col-xs-12"><button class="btn btn-primary btn-lg btn-block" type="submit">Add New Kiosk Model</button></div>
+               </div><!--/row-->
+
+            </form>
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+
+</div><!--/row-->
+<script>
+   var modelimage_add_src;
+   $('.alink').off('click');
+   $('.alink').on('click', function (obj) {  // ตัวอย่าง <a href="cpanel/staff/qrcode" class='alink'>QR Code</a>
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+
+   function readURL_model_add(input) {
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+
+         reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+            modelimage_add_src = e.target.result;
+         }
+
+         reader.readAsDataURL(input.files[0]);
+      }
+   }
+
+   $("#previewimage").change(function () {
+      readURL_model_add(this);
+   });
+
+   if ($('#name').val()) {
+      $(".chk_name").removeClass('text-help');
+   }
+
+
+
+   $("#addKioskModel").on('submit', function () {
+      var errortext;
+      var name = $('#name').val();
+
+      // ทำต่อได้เลยค่ะ
+      var placement = $('#placement').val();
+      var slot = $('#slot').val();
+      var description = $('#description').val();
+      var status = $('#status').val();
+
+      var title = 'Add Kiosk Model';
+
+      if (name == '') {
+         // ค่าว่าง
+         errortext = 'กรุณากรอก Model Name';
+         $(".chk_name").show();
+         $(".chk_name").addClass("text-help");
+         $('.chk_name').html('จำเป็นต้องกรอก');
+      } else {
+         // กรอกข้อมูลเข้ามา
+         $(".chk_name").hide();
+         $(".chk_name").removeClass("text-help");
+      }
+      if (modelimage_add_src.length > '2097152') {
+         errortext = 'กรุณาเลือกรูปภาพขนาดไฟล์ที่อนุญาตน้อยกว่า 2 MB';
+      }
+
+      if (errortext) {
+         // แจ้ง error
+         new PNotify({
+            title: title + ' Error',
+            text: errortext,
+            modules: {
+               Animate: {
+                  animate: true,
+                  inClass: 'zoomInLeft',
+                  outClass: 'zoomOutRight'
+               }
+            }
+         });
+
+         return false;
+      } else {
+
+
+         console.log("SUBMIT" + '/api/member/kioskmodel_add/');
+         var postdata = {km_name: name, km_slot: slot, km_placement: placement, km_status: status, km_description: description, km_image: modelimage_add_src};
+
+         console.log(postdata);
+         $.post('/api/member/kioskmodel_add/', postdata).done(function (data) {
+            //  แจ้งบันทึกสำเร็จ
+            km_image: modelimage_add_src = null;
+            new PNotify({
+               title: title + ' Success',
+               text: 'บันทึกข้อมูลสำเร็จ',
+               type: 'success'
+            });
+            console.log("SUBMIT data " + data);
+         });
+      }
+
+      console.log("return false");
+      return false;
+   });
+
+
+</script>
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->

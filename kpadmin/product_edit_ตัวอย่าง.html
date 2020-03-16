@@ -1,0 +1,150 @@
+   <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item"><a href="/cpanel/home">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="product_lists.php"><?=$pageTitle?></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
+    <!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+	<div class="content-title">
+        <div class="col-md-7 col-sm-8 col-xs-12">
+            <h2><b>Editor</b></h2>
+        </div><!--/col-->   
+        <div class="col-md-5 col-sm-4 col-xs-12">
+            <div class="dataTables_wrapper">
+            <form method="GET">
+                <div class="dataTables_custom" style="width:100%;">
+                	<div class="dateMonthPicker">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="fa fa-fw fa-flask"></i></span>
+                            <select id="productid" name="productid" class="form-control input-sm selectpicker selectCustomW100" style="width:100%;" onchange="this.form.submit()">
+                            
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div><!--/col-->   
+    </div><!--/content-title-->
+</div><!--/row-->  
+
+<div class="row" id='product_edit_page'>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <p class="text-th">หน้าแก้ไข สินค้า <span style='font-weight:300;color:#999;'>( <span class="product_product_name">Product Name</span>)</span> <b></b></p>
+            
+            <button class="btn btn-danger btn-sm pull-right btn-delPRD" data-productid=""><i class="glyphicon glyphicon-trash"></i></button>
+            
+        </div><!--/x_title-->
+
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-fw fa-close"></i></button>
+	Product ID <b><b>Successful</b>. 
+    <i style="margin-left:10px; color:rgba(255,255,255,0.5);">on </i>
+</div>
+
+        <div class="x_content">
+        	<form id="editPRD" class="form-horizontal form-label-left" method="POST" data-parsley-validate="" novalidate>
+            <input type="hidden" name="action" value="editPRD"> 
+			<input id="bywho" name="bywho" value="" style="display:none;" />
+            <input id="when" name="when" value="" style="display:none;" />
+                <div class="row">
+                    <div class="col col-md-3 col-sm-4 col-xs-12">
+                    	<div class="form-group" style="text-align:center;">
+                        
+                        	<img id="preview" src="" class="img-responsive " style="max-height:300px; margin:0 auto;">
+                        
+                            <img id="preview" src="" class="img-responsive" style="max-height:300px; margin:0 auto;">
+                            <img id="preview" src="/images/products/" class="img-responsive product_product_image" style="max-height:300px; margin:0 auto;">
+                       
+                            <div style=" width:100%; margin-top:30px; padding:10px; border:1px solid #e6ecf5; border-radius: 2px; overflow:hidden;">
+                            	<input type="file" name="previewimage" id="previewimage" onchange="previewIMG()">
+                                <input id="productimage" name="productimage" value=""  style="display:none;" /> 
+                            </div>
+                        </div>
+                    </div><!--/col-->
+                    <div class="col col-md-9 col-sm-8 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Product Name</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input class="form-control product_product_name" type="text" id="productname" name="productname" value="" required="required" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> SKU</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input class="form-control product_SKU" type="text" id="sku" name="sku" value="" required="required" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Price</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <input class="form-control product_init_price" type="number" id="price" name="price" value="" style="width:calc(100% - 40px); display:inline-block;" required />
+                                <span class="unit">THB</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Category</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select id="category" name="category" class="form-control input-sm selectpicker selectCustomW100">
+                               
+                                    <option data-content="" value="" </option>
+                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <textarea class="resizable_textarea form-control product_description" rows="3" id="description" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div><!--/col-->
+                </div><!--/row-->
+            
+            	<div class="row">
+                    <div class="ln_solid"></div>
+                    <div class="col-md-3 col-sm-6 col-xs-12"><a href="/cpanel/product/lists" class="alink btn btn-default btn-lg btn-block">Back to Product Lists</a></div>
+                    <div class="col-md-9 col-sm-6 col-xs-12"><button class="btn btn-primary btn-lg btn-block" type="submit" >Submit Edited</button></div>
+				</div><!--/row-->
+            </form>
+        </div><!--/x_content-->
+    </div><!--/x_panel-->
+    </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<script >
+    $('.alink').on('click',function(obj){ 
+        go2View($(obj.target).attr('href'),'Kapook Vending');
+        return false;
+    });
+
+
+    function product_showdata(productid){
+            $.get('/api/member/productid/'+productid, function(data){       
+            var objjquery = $('#product_edit_page');  // อยู่ตรง Div Class ="Row
+            setdatabyclass(objjquery, 'product', data) ;  // ชื่อนำหน้าที่เรียกใช้ 
+            console.log('viewing data');            
+        });    
+    }
+
+    $('#editPRD').on('submit',function(){ 
+               
+         $.post('/api/member/productid/'+productid, {prd_id:productid, prd_name:productname, prd_sku:sku, prd_price:price, prd_category:category, prd_description:description },function(data) {
+           
+            /// ยังบันทึกข้อมูลไม่ได้
+           
+        
+         });
+        return false;
+    });
+    
+
+</script>
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->

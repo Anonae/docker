@@ -1,0 +1,213 @@
+<!-- Start Content -->
+
+<!--start Breadcrumb-->
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Slot Technical LOG</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Slot <b>Technical LOG</b>
+            <span style="font-size:15px;"> on
+               <b class="text-green">2019-06-01</b> to <b class="text-green">2019-06-30</b>
+            </span>
+         </h2>
+      </div><!--/col-->
+      <div class="col-md-4 col-sm-4 col-xs-12">
+         <div class="dataTables_wrapper">
+            <div class="dataTables_custom" style=" width:100%;">
+               <div class="dateRangePicker topPageDisplay">
+                  <div class="input-prepend input-group">
+                     <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                     <input name="" id="dateRangeTCP" class="form-control mainDatePicker" value="" autocomplete="off">
+                     <input class="form-control input-sm" style="left:35px;" id="datefromClone" value="2019-06-01">
+                     <input class="form-control input-sm" style="right:0;" id="dateClone" value="2019-06-30">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div><!--/col-->
+   </div><!--/content-title-->
+</div><!--/row-->
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+
+
+
+            <p class="text-th">แสดงข้อมูลด้านเทคนิค <b class="b600" style="color:#000;">ช่องเก็บสินค้า</b> ทั้งหมด</p>
+            <p class="text-help">
+               ตั้งแต่วันที่ <b class="text-green">2019-06-01</b> ถึง <b class="text-green">2019-06-30</b>
+               รวมทั้งหมด <b class="text-green">0</b> รายการ
+            </p>
+         </div><!--/x_title-->
+         <div class="x_content">
+
+            <div class="dataTables_wrapper">
+               <form id="filterForm" method="GET" class="form form-group" style="margin-bottom:6px;">
+                  <div class="top topSelect" style=" width:100%; display:table;">
+                     <div class="dataTables_length" style="float:left; text-align:left; padding-left:0; padding-right:10px; width:fit-content;">
+                        <label>Kiosk
+                           <select name="kioskid" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                              <option value="" selected="">...</option>
+                              <option value="2323" selected="">2323 (กระทิงแดง สนามบอล)</option>
+                              <option value="4152">4152 (ADVWS (Dev))</option>
+                              <option value="4153">4153 (FMT)</option>
+                              <option value="4154">4154 (ADVWS (White))</option>
+                           </select>
+                        </label>
+                     </div>
+                     <div class="dataTables_filter" style="float:left; text-align:left; padding-left:0; padding-right:10px; width:85px;">
+                        <label>Slot
+                           <input class="form-control input-sm autoFilter" name="slotid" value="" onchange="this.form.submit()" maxlength="2" style="width:40px; text-align:right;">
+                        </label>
+                     </div>
+                     <div class="dataTables_length" style="float:left; text-align:left; padding-left:0; padding-right:10px; width:fit-content;">
+                        <label>Slot Action
+                           <select name="slotaction" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                              <option value="" selected="">...</option>
+                              <option value="buy">BUY</option>
+                              <option value="fill">FILL</option>
+                              <option value="remove">REMOVE</option>
+                              <option value="setup">SETUP</option>
+                           </select>
+                        </label>
+                     </div>
+
+                     <div class="dataTables_custom">
+                        <div class="dateRangePicker displayOnly form-inline">
+                           <span>From</span>
+                           <input class="form-control input-sm" name="datefrom" id="datefrom" value="2019-04-01" autocomplete="off">
+                           <span>To Date</span>
+                           <input class="form-control input-sm" name="date" id="date" value="2019-06-30" autocomplete="off">
+                           <span>Displayed.</span>
+                        </div>
+                     </div>
+                  </div><!--/top-->
+                  <div class="top">
+                     <div class="dataTables_filter">
+                        <label>Search
+                           <input class="form-control input-sm autoFilter" name="search" placeholder="" onchange="this.form.submit()" disabled="">
+                        </label>
+                     </div>
+
+                     <div class="dataTables_length">
+                        <label>Record/Page
+                           <select name="display" class="form-control input-sm autoFilter" onchange="this.form.submit()">
+                              <option value="10">10</option>
+                              <option value="25" selected="">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                              <option value="1000">1000</option>
+                           </select>
+                        </label>
+                     </div>
+
+                     <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                           <!-- Previous -->
+                           <!-- First -->
+
+                           <!-- Main Loop -->
+                           <li class="paginate_button active"><a href="?page=1&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">1</a></li>
+                           <li class="paginate_button "><a href="?page=2&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">2</a></li>
+                           <li class="paginate_button "><a href="?page=3&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">3</a></li>
+                           <li class="paginate_button "><a href="?page=4&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">4</a></li>
+                           <li class="paginate_button "><a href="?page=5&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">5</a></li>
+
+                           <!-- Last -->
+                           <li class="paginate_button disabled"><a href="#">…</a></li>            <li class="paginate_button "><a href="?page=8&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">8</a></li>
+                           <!-- Next -->
+                        </ul>
+                     </div>
+
+                  </div>
+               </form>
+            </div>
+
+            <style type="text/css">
+               .table>thead>tr>th.actionTD { text-align:center; width:50px; padding:8px 4px;}
+            </style>
+            <table id="" class="table table-striped table-bordered table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+               <thead>
+                  <tr>
+                     <th rowspan="2" style="color:#bbb;"><small>#ID</small></th>
+                     <th rowspan="2">Time</th>
+                     <th rowspan="2" colspan="1" style=" text-align:center;">Kiosk</th>
+                     <th rowspan="1" colspan="3" style=" text-align:center;">Product</th>
+                     <th rowspan="2" colspan="1" style=" text-align:center;">Capacity</th>
+                     <th rowspan="2" colspan="1" style=" text-align:center; border-right:1px solid #aaa;">Action</th>
+                     <th rowspan="1" colspan="2" style=" text-align:center; border-right:1px solid #aaa;">Unit</th>
+                     <th rowspan="1" colspan="2" style=" text-align:center;">Quantity</th>
+                  </tr>
+                  <tr>
+
+                     <th style="text-align:center;" class=""><small style="color:#bbb; padding-right:3px;">#Slot ID</small></th>
+                     <th style="text-align:center;" class="">Slot</th>
+                    	<th style="text-align:left;" class="">Name</th>
+
+                     <th style="text-align:center;" class="actionTD"><!--<i class="fa fa-fw fa-upload" title="ข้อมูล ขาออก"></i>-->Out</th>
+                     <th style="text-align:center; border-right:1px solid #aaa;" class="actionTD"><!--<i class="fa fa-fw fa-download" title="ข้อมูล ขาเข้า"></i>-->In</th>
+                     <th style="text-align:right;" class="">Initial</th>
+                     <th style="text-align:right;" class="">Remain</th>
+
+                  </tr>
+               </thead>
+
+               <tbody>
+                  <tr id="trTRN_xxxx">
+                     <td class="ordinal"><small>#1235</small></td>
+                     <td>2019-05-10 10:54:48</td>
+                     <td data-kioskid="2323" data-iotid="71" style=" text-align:left;"><b style="font-weight:700;">2323</b></td>
+                     <td style=" text-align:center; color:#bbb;"><span>#71</span></td>
+                     <td style=" text-align:center;">25</td>
+                     <td>กระทิงแดง ซิงค์ 145 ซีซี. (ขวดกลม)</td>
+                     <td style="text-align:center;"><span style="font-weight:300;">15</span></td>
+                     <td style=" text-align:center; border-right:1px solid #aaa;"><span style="color:#000; text-transform: uppercase; font-size:11px;">fill</span></td>
+                     <td></td>
+                     <td style=" text-align:center; border-right:1px solid #aaa;"><span style="color:#26B99A ; font-weight:600;">1</span></td>
+                     <td style="text-align:right;"><span style=" color:#aaa; font-weight:300;">12</span></td>
+                     <td style="text-align:right;"><span style=" color:#000; font-weight:600;">13</span></td>
+                  </tr>
+               </tbody>
+            </table>
+            <div class="dataTables_wrapper">
+               <div class="bottom">
+                  <div class="dataTables_paginate paging_simple_numbers">
+                     <ul class="pagination">
+                        <!-- Previous -->
+                        <!-- First -->
+
+                        <!-- Main Loop -->
+                        <li class="paginate_button active"><a href="?page=1&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">1</a></li>
+                        <li class="paginate_button "><a href="?page=2&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">2</a></li>
+                        <li class="paginate_button "><a href="?page=3&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">3</a></li>
+                        <li class="paginate_button "><a href="?page=4&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">4</a></li>
+                        <li class="paginate_button "><a href="?page=5&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">5</a></li>
+
+                        <!-- Last -->
+                        <li class="paginate_button disabled"><a href="#">…</a></li>            <li class="paginate_button "><a href="?page=8&amp;kioskid=2323&amp;productid=&amp;display=25&amp;datefrom=2019-04-01&amp;date=2019-06-30&amp;onhour=&amp;search=&amp;refill=&amp;action=filtered&amp;trntype=buy&amp;permisid=&amp;slotid=&amp;slotaction=">8</a></li>
+                        <!-- Next -->
+                     </ul>
+                  </div>
+
+                  <div class="dataTables_info">Showing
+                     1 to 25 of 198                                             entries</div>
+               </div>
+            </div>
+
+         </div>
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<!-- // End Content on PAGE ///////////// -->

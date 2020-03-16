@@ -1,0 +1,238 @@
+<!-- Start Content -->
+
+<!--start Breadcrumb-->
+
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Kiosks</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Kiosks <b>Lists</b></h2>
+      </div>
+      <!--/col-->
+   </div>
+   <!--/content-title-->
+</div>
+<!--/row-->
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">แสดงรายการ ตู้กดน้ำ ทั้งหมด <b class="text-green " id="total_item"></b> ตู้</p>
+            <div class="nav navbar-right"><a href="/cpanel/kiosk/add" class="alink btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i> Add New Kiosk</a></div>
+            <div class="clearfix"></div>
+         </div>
+         <!--/x_title-->
+         <div class="x_content">
+            <div class="dataTables_wrapper">
+               <form id="filterForm_kiosk" method="GET" class="form form-group" style="margin-bottom:6px;"  onsubmit="return filterFormsubmit_kiosk()">
+                  <div class="top">
+                     <div class="dataTables_filter">
+                        <label>Search
+                           <input name="search" id="search_kiosk" class="form-control input-sm" >
+                        </label>
+                     </div>
+                     <div class="dataTables_length">
+                        <label>Record/Page
+                           <select name="display" class="form-control input-sm autoFilter" onchange="this.form.submit()">
+                              <option value="10">10</option>
+                              <option value="25" selected="">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                              <option value="1000">1000</option>
+                           </select>
+                        </label>
+                     </div>
+                     <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                           <!-- Previous -->
+                           <!-- First -->
+
+                           <!-- Main Loop -->
+
+                           <!-- Last -->
+                           <!-- Next -->
+                        </ul>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
+               <thead>
+                  <tr>
+                     <th style="width: 50px;">ID</th>
+                     <th style="text-align:left;width: 140px;">Model</th>
+                     <th style=" text-align:left; width:90px;">TCP Code</th>
+                     <th style=" text-align:left; width:90px;">Image</th>
+                     <th>Name</th>
+                     <th style="text-align:left;width: 220px;">Route</th>
+                     <!--<th>Location</th>
+                         <th style="width:160px;">Latitude, Longitude</th>-->
+                     <th>Description</th>
+                     <th style="width: 120px; text-align: center;">Last Update</th>
+                     <th style="width: 120px; text-align: center;">Status</th>
+                     <th class="text-center" style="width: 100px;">Action</th>
+                  </tr>
+
+               </thead>
+               <tbody id='mytable'>
+                  <tr class='row_tablecontent' style='display:none'>
+                     <td class="text-center"> <div class="kiosk_id">#</div></td>
+                     <td>
+                        <i class="kiosk_model_id" style="color:#ddd;">ยังไม่ระบุ</i>
+                        <span class="kiosk_model_name"> Model Name</span>
+                     </td>
+                     <td  class="text-center">
+                        <a>
+                           <b class="kiosk_tcpcode kiosk_edit_link">code</b>
+                        </a>
+                        <!--  (<span class="kiosk_id"></span>)  -->
+                     </td>
+                     <td class="text-center">
+                         <a href="#" class="avatar_link kiosk_edit_link">                             
+                             <img src="" class="kiosk_image avatar" style=" height:50px;">
+                         </a>
+                        
+                     </td>
+                     <td class="kiosk_name">Name</td>
+                     <td>
+                        <i class="kiosk_route_id">ยังไม่ระบุ</i>
+                        <span class="kiosk_route_name">Route Name</span>
+                     </td>
+                     <!--<td>Location</td>
+                      <td style="widtd:160px;">Latitude, Longitude</td>-->
+                     <td class="kiosk_description">Description</td>
+                     <td class="kiosk_lastupdate text-center">status</td>
+                     <td class="kiosk_status text-center">status</td>
+                     <td class="text-center">
+
+                        <button class="btn btn-silver btn-xs kiosk_edit_link" title="edit" href="#">
+                           <i class="fa fa-fw fa-pencil"></i>
+                        </button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+
+
+            <div class="dataTables_wrapper">
+               <div class="bottom">
+                  <div class="dataTables_paginate paging_simple_numbers">
+                     <ul class="pagination">
+                        <!-- Previous -->
+                        <!-- First -->
+
+                        <!-- Main Loop -->
+
+                        <!-- Last -->
+                        <!-- Next -->
+                     </ul>
+                  </div>
+                  <div class="dataTables_info">Showing 1 to 3 of 3 entries</div>
+               </div>
+            </div>
+         </div>
+         <!--/x_content-->
+      </div>
+      <!--/x_panel-->
+   </div>
+   <!--/col-md-12-->
+
+</div>
+<!--/row-->
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->
+<script>
+   var template_of_testtable = $('#mytable').first().html();
+   //console.log(template_of_testtable);
+   var maintable = $('#mytable').first();
+   //console.log(maintable.html());
+   function filterFormsubmit_kiosk() {
+
+      //alert($('#search_route').val());
+      $('#mytable').first().html(template_of_testtable);
+
+      if ($('#search_kiosk').val()) {
+         showkiosk_list($('#search_kiosk').val());
+         console.log('can sent value to function', $('#search_kiosk').val());
+         return false;
+
+      } else {
+         showkiosk_list('');
+         return false;
+
+      }
+      return false;
+
+   }
+   function showkiosk_list(searchstr) {
+      if (searchstr) {
+         var parth = '/api/member/kiosklist/search/' + searchstr;
+      } else {
+         var parth = '/api/member/kiosklist/';
+      }
+      $.get(parth, function (objdata) {
+         console.log(objdata);
+
+         $("#total_item").text(objdata.length);
+         //console.log(obj);
+         for (var x = 0; x < objdata.length; x++) {
+
+            var TR = tablerow(maintable, 'kiosk', objdata[x], template_of_testtable);
+            // กรณีมีปุ่ม Edit / Show
+            TR.find('.kiosk_edit_link').attr('href', '/cpanel/kiosk/edit?kioskid=' + objdata[x].id);
+            TR.find('.kiosk_model_id').html(objdata[x].modelid._id + ') ').attr("style", "margin-right: 5px;");
+            TR.find('.kiosk_model_name').html(objdata[x].modelid.model_name).attr("style", "font-weight:700");     // model name
+            //TR.find('.kiosk_route_name').html(objdata[x].routeid.name);           // route name
+            TR.find('.kiosk_route_id').html(objdata[x].routeid._id + ') ').attr("style", "margin-right: 5px;");
+            TR.find('.kiosk_route_name').html(' ' + objdata[x].routeid.name + ' - ' + objdata[x].routeid.area);
+
+            if (objdata[x].routeid == 0) {
+               TR.find('.kiosk_route_name').html('ยังไม่ระบุ').attr('style', 'font-weight:300');
+               TR.find('.kiosk_route_id').html('');
+
+            }
+
+            if (objdata[x].status == 1) {
+               TR.find('.kiosk_status').text('เปิดการใช้งาน').attr('style', 'color : green');
+            }
+            if (objdata[x].status == 0) {
+               TR.find('.kiosk_status').text('ปิดการใช้งาน').attr('style', 'color : orange');
+            }
+
+
+            //console.log(TR.html());
+            TR.show();
+
+         }
+         console.log("SET THE LINK");
+
+         $('.kiosk_edit_link').on('click', function (obj) {
+            /* กำหนด class .prd_edit_link  กดแล้วให้ไปที่หน้าแก้ไข  ตัวอย่าง
+             <a href="#" class="prd_product_name prd_edit_link">  Product Name </a> */
+            console.log($(obj).attr('href'));
+            go2View($(obj.currentTarget).attr('href'), 'Editing kiosk');
+            return false;
+         });
+         return false;
+      });
+
+   }
+
+   showkiosk_list('');
+   $('.alink').off("click");
+   $('.alink').on('click', function (obj) {  // ตัวอย่าง <a href="cpanel/staff/qrcode" class='alink'>QR Code</a>
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+
+
+</script>

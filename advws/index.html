@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Advance Web Service</title>  
+  <!-- <base href="/advws/"> -->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!-- CSS -->
+
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="/advws/vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="/advws/vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Google fonts - Roboto-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+  <!-- Bootstrap Select-->
+  <link rel="stylesheet" href="/advws/vendor/bootstrap-select/css/bootstrap-select.min.css">
+  <!-- owl carousel-->
+  <link rel="stylesheet" href="/advws/vendor/owl.carousel/assets/owl.carousel.css">
+  <link rel="stylesheet" href="/advws/vendor/owl.carousel/assets/owl.theme.default.css">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="/advws/css/style.blue.css" id="theme-stylesheet">
+  <!-- theme ADVWS-->
+  <link rel="stylesheet" href="/advws/css/main.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="/advws/css/custom.css">
+
+
+  <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+    <script src="/advws/js/advscript.js" type="text/javascript"></script>
+
+    <script src="/advws/js/front.js"></script> 
+    <script src="/advws/js/gmaps.js"></script> 
+    <script src="/advws/js/gmaps.init.js"></script>
+    <script src="/advws/vendor/popper.js/umd/popper.min.js"></script> 
+    <script src="/advws/vendor/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="/advws/vendor/jquery.cookie/jquery.cookie.js"></script> 
+    <script src="/advws/vendor/waypoints/lib/jquery.waypoints.min.js"></script> 
+    <script src="/advws/vendor/jquery.counterup/jquery.counterup.min.js"></script> 
+    <script src="/advws/vendor/owl.carousel/owl.carousel.min.js"></script> 
+    <script src="/advws/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script> 
+    <script src="/advws/js/jquery.parallax-1.1.3.js"></script> 
+    <script src="/advws/vendor/bootstrap-select/js/bootstrap-select.min.js"></script> 
+    <script src="/advws/vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
+
+    <!-- Favicon and apple touch icons-->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+    <style type="text/css">
+      body, td, th {
+              font-family: Roboto, Helvetica, Arial, sans-serif;
+      }
+     </style>
+      
+   </head>
+
+<body>
+    <div id="all"> 
+                
+        <!-- Navbar Start --> 
+        <div id="headermenu">
+            Top bar
+        </div>  
+        <!-- Navbar End--> 
+                
+        
+       
+              
+        <div id="mainpage_home">
+            Content
+        </div>
+        <div id="mainpage_news">
+            News
+        </div>
+          
+        
+        <section id="inc_our_service" class="bar bg-gray">
+            <div class="container">
+                <div class="heading text-center">
+                    <h2>Our Services</h2>
+                </div>
+                    <ul class="list-unstyled owl-carousel customers no-mb">
+                    <li class="item"><a href="https://www.siamtopup.com/" target="_blank"><img src="images/logo-siamtopup.png" alt="siamtopup" class="img-fluid"></a> </li>
+                    <li class="item"><a href="http://www.kapooktopup.com/" target="_blank"><img src="images/logo-kapooktopup.png" alt="kapooktopup" class="img-fluid"></a> </li>
+                    <li class="item"><img src="images/logo-awsgateway.png" alt="awsgateway" class="img-fluid"> </li>
+                    <li class="item"><a href="http://www.advancekiosk.com/" target="_blank"><img src="images/logo-advancekiosk.png" alt="advancekiosk" class="img-fluid"></a> </li>
+                    <li class="item"><a href="http://welovebooking.net/" target="_blank"><img src="images/logo-welovebooking.png" alt="welovebooking" class="img-fluid"></a> </li>
+                    <li class="item"><a href="https://www.qpay.co.th/" target="_blank"><img src="images/logo-qpay.png" alt="qpay" class="img-fluid"></a> </li>
+              </ul>
+           </div>
+        </section> <!-- // inc_our_service -->
+        
+        <!-- FOOTER --> 
+        <div id="inc_footer">
+            Footer
+        </div>               
+        <!-- // FOOTER -->
+       
+        
+      </div>  <!-- // div id="all" -->
+
+    
+    <!-- Javascript files--> 
+    <script>
+
+              $('#headermenu').load('headermenu.html');
+              $('#mainpage_home').load('home.html');                           
+              $("#inc_footer").load( "inc_footer.html");   
+              
+              onPageshow('index.html', function () {
+                  alert("lddkkd") ;
+                  $('#mainpage_home').show();
+                  $('#mainpage_news').hide();
+              });
+              
+              onPageshow('news.html', function () {
+                  $('#mainpage_news').load('news.html');
+                  $('#mainpage_news').show();
+              });
+              
+              
+              
+              
+//              $("#inc_our_service").load("inc_our_service.html",function() {
+//                   alert( "Load was performed." );
+//              });
+              
+           
+              
+              
+//             onPageshow('/home', function () {
+//                    $('#mainpage_home').show();
+//             });
+//
+//             //go2View('/question',"Kapookvending Question (FAQ)");
+//             onPageshow('/question', function () {
+//                    $('#mainpage_question').load('/question.html');
+//                    $('#mainpage_question').show();
+//             });
+//
+//             onPageshow('/form', function () {
+//                    $('#mainpage_form').load('/form.html');
+//                    $('#mainpage_form').show();
+//             });
+//
+//
+//             onPageshow('/contact', function () {
+//                    $('#mainpage_contact').load('/contact.html');
+//                    $('#mainpage_contact').show();
+//             });
+
+
+            
+             
+             
+         //     go2View(starturl, "Advance Web Service");
+             // $('#preloader').hide();
+         //     go2View('/home',"Advance Web Service");
+             jQuery.ready();
+      </script>
+    
+</body>
+</html>

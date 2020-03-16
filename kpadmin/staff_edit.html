@@ -1,0 +1,324 @@
+<!--start Breadcrumb-->
+<style>
+   .text-help { font-size: 11px; font-weight: 500; color: #ff5722; }
+
+</style>
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb" >
+      <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="staff_lists.php">Staffs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Editor</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-7 col-sm-7 col-xs-12">
+         <h2>Staff <b>Editor</b></h2>
+      </div>
+      <!--/col-->
+
+      <!--/col-->
+   </div>
+   <!--/content-title-->
+</div>
+<!--/row-->
+
+<div class="row" id="staff_edit_page">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title row" >
+            <div class=" col-lg-8 col-md-8 col-sm-8 col-8" >
+               <p class="text-th">แก้ไขข้อมูล เจ้าหน้าที่เข้าใช้งาน <span>( <span class="staff_id"></span> | <span class="staff_name"></span>)</span></p>
+
+            </div>
+            <div class="col-lg-4 col-md-4  col-sm-4 col-2 text-right">
+               <button class=" btn  btn-sm btn-danger staffArc_edit_link" type="submit">Archived</button>
+            </div>
+
+
+         </div>
+         <!--/x_title-->
+         <div class="x_content">
+            <form id="editStaff" class="form-horizontal form-label-left" method="POST" data-parsley-validate="" novalidate>
+               <input type="hidden" name="action" value="edited">
+               <input id="bywho" name="bywho" value="" style="display:none;" />
+               <input id="when" name="when" value="2019-06-28 12:10:08" style="display:none;" />
+               <div class="row">
+                  <div class="col col-md-3 col-sm-4 col-xs-12 col-image">
+                     <div class="form-group" style="text-align:center;">
+                        <img id="preview" src="https://profile.line-scdn.net/0hVpkesoIQCV9WHCWNaAV2CGpZBzIhMg8XLi5FOHofU2Z8fxsKbi4VbnpOUDx8KE1dOX1DOXpLUz8v" class="img-responsive staff_picture" style="max-height:300px; margin:0 auto; background: #f7f7f7; border: 1px solid #e6e6e6; padding: 2px; box-shadow: 0 10px 20px -10px rgba(0,0,0,0.35); border-radius: 100%;"> </div>
+                  </div>
+                  <!--/col-->
+
+                  <div class="col col-md-9 col-sm-8 col-xs-12">
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">* </span>Display Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12 staff_displayname" type="text" id="displayname" name="displayname" value="" required />
+                           <div class="text-help  chk_name"></div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Line Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12 staff_name" type="text" id="linename" name="linename"  required readonly disabled/>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Line UserID</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12 staff_userId " type="text" id="lineuserid" name="lineuserid"  required readonly disabled/>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">* </span>Group</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12 staff_groupid" type="text" id="group" name="group" value="" required />
+                           <div class="text-help  chk_group"></div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Permission</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="select_permission" name="per_id" class="form-control input-sm selectpicker selectCustomW100 staff_per_id" style="width:100%;">
+                              <!--
+                            <option value="0" >...</option>
+                            <option data-content="<b style='font-weight:600;'>Administrator</b> <span>(ผู้ดูแลระบบ)</span>" value="2" >Administrator</option>
+                            <option data-content="<b style='font-weight:600;'>Monitor</b> <span>(ผู้ตรวจสอบ)</span>" value="3" >Monitor</option>
+                            <option data-content="<b style='font-weight:600;'>Sales Officer</b> <span>(พนักงานขาย)</span>" value="11" >Sales Officer</option>
+                            <option data-content="<b style='font-weight:600;'>VanSale Officer</b> <span>(พนักงานหน่วยรถ)</span>" value="12" >VanSale Officer</option> -->
+                           </select>
+                           <p class="text-help">สิทธิการเข้าใช้งานระบบ</p>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Route</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="select_route" name="route_id" class="form-control input-sm selectpicker selectCustomW100 staff_route_id" style="width:100%;">
+                              <!--
+                            <option value="0" >...</option>
+                            <option data-content="<b style='font-weight:600;'>Administrator</b> <span>(ผู้ดูแลระบบ)</span>" value="2" >Administrator</option>
+                            <option data-content="<b style='font-weight:600;'>Monitor</b> <span>(ผู้ตรวจสอบ)</span>" value="3" >Monitor</option>
+                            <option data-content="<b style='font-weight:600;'>Sales Officer</b> <span>(พนักงานขาย)</span>" value="11" >Sales Officer</option>
+                            <option data-content="<b style='font-weight:600;'>VanSale Officer</b> <span>(พนักงานหน่วยรถ)</span>" value="12" >VanSale Officer</option> -->
+                           </select>
+                           <p class="text-help">เส้นทางการเดินรถ</p>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Mobile</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12 staff_mobile" type="text" id="mobile" name="mobile" value="" required />
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <textarea class="resizable_textarea form-control col-md-7 col-xs-12 staff_description" type="text" rows="5" id="description" name="description" value="" required ></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="status"  class="staff_status form-control input-sm selectpicker selectCustomW100">
+                              <option value='1'>เปิดการใช้งาน</option>
+                              <option value='0'>ปิดการใช้งาน</option>
+                           </select>
+
+                        </div>
+                     </div>
+                  </div>
+                  <!--/col-->
+
+               </div>
+               <!--/row-->
+
+               <div class="row">
+                  <div class="ln_solid"></div>
+                  <div class="col-md-3 col-sm-6 col-xs-12"><a href="/cpanel/staff/lists" class=" alink btn btn-default btn-lg btn-block">Back to Staff Lists</a></div>
+                  <div class="col-md-9 col-sm-6 col-xs-12">
+                     <button class="btn btn-primary btn-lg btn-block" type="submit" >Submit Edited</button>
+
+
+                  </div>
+               </div>
+               <!--/row-->
+
+            </form>
+         </div>
+         <!--/x_content-->
+      </div>
+      <!--/x_panel-->
+   </div>
+   <!--/col-md-12-->
+
+</div>
+<!--/row-->
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->
+
+<script>
+   $('.alink').on('click', function (obj) {
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+
+
+   var staffid_editing;
+   function staff_showdata(staffid) {
+      $.get('/api/member/permissionlist_status1', function (data) {  // หยิบที่สร้างใน nodered มา
+         console.log('Permission ', data);
+         //  staffid_editing = staffid;
+         var seldata = ''; // ตั้งชื่อตัวแปรใหม่ ไปใช้กับ <select
+         for (var x = 0; x < data.length; x++) {
+            seldata += '<option value="' + data[x]._id + '">' + data[x].name + '</option>';
+         }
+         seldata += '<option value="' + 0 + '">...</option>';
+         $('#select_permission').html(seldata); // <select id ="select_category"
+
+
+         $.get('/api/member/routelist_status1', function (objdata) {  // หยิบที่สร้างใน nodered มา
+            console.log('route ', objdata);
+
+            var seldata2 = ''; // ตั้งชื่อตัวแปรใหม่ ไปใช้กับ <select
+            for (var x = 0; x < objdata.length; x++) {
+               seldata2 += '<option value="' + objdata[x]._id + '">' + objdata[x].name + ' - ' + objdata[x].area + '</option>';
+
+            }
+            seldata2 += '<option value="' + 0 + '">...</option>';
+            $('#select_route').html(seldata2); // <select id ="select_category"
+
+
+            staff_get(staffid); // ให้ไปทำ ฟังก์ชั่น product_get ต่อ
+         });
+
+
+      });
+   }
+
+   function staff_get(staffid) {
+      console.log('StaffID ' + staffid);
+      // console.log('fail continute', staffid);
+      $('.staffArc_edit_link').attr('id', staffid);
+      $('.staffArc_edit_link').attr('href', '/cpanel/staff/archived_lists/staffid=' + staffid);
+
+      $.get('/api/member/staff_id/' + staffid, function (data) {
+         staffid_editing = staffid;
+         console.log(staffid_editing);
+
+
+         console.log('fail continute');
+         console.log('Show Data', data);
+
+         var objjquery = $('#staff_edit_page');  //  <div class="row kiosk_edit_page"> แก้ไขข้อมูล
+         setdatabyclass(objjquery, 'staff', data);  // product ชื่อเรียกนำหน้านำไปใช้คือ  <div class="kiosk_name"
+         console.log('Show Data', data);
+
+      });
+      if ($('#displayname').val()) {
+         $(".chk_name").removeClass('text-help');
+      }
+      if ($('#group').val()) {
+         $(".chk_group").removeClass('text-help');
+      }
+   }
+
+   // Form Edit
+//function Disable staff
+   $('.staffArc_edit_link').on('click', function (obj) {
+      //console.log(obj);
+      var staffid_editing = $(this).attr('id');
+      console.log('get staff ' + staffid_editing);
+
+      var postdata = {staff_id: staffid_editing};
+      $.get('/api/member/staff_archived/' + staffid_editing, postdata).done(function (data) {
+         console.log('Update Status Success', data);
+      });
+//         $.get('/api/member/staff_approveid/' + id, function (data) {
+//            console.log('Retrieved Success', data);
+//         });
+
+      go2View($(obj.currentTarget).attr('href'), 'Editing Product');
+      return false;
+   });
+
+
+   $('#editStaff').on('submit', function () {
+      var errortext;
+      var displayname = $('#displayname').val();
+
+      var permission = $('#select_permission').val();
+      var route = $('#select_route').val();
+      var mobile = $('#mobile').val();
+      var description = $('#description').val();
+      var status = $('#status').val();
+      var group = $('#group').val();
+
+      if (displayname == '') {
+         // ค่าว่าง
+         errortext = 'กรุณากรอก Display Name';
+         $(".chk_name").show();
+         $(".chk_name").addClass("text-help");
+         $('.chk_name').html('จำเป็นต้องกรอก');
+      } else {
+         // กรอกข้อมูลเข้ามา
+         $(".chk_name").hide();
+         $(".chk_name").removeClass("text-help");
+      }
+
+      if (group == '') {
+         // ค่าว่าง
+         errortext = 'กรุณากรอก Group';
+         $(".chk_name").show();
+         $(".chk_name").addClass("text-help");
+         $('.chk_name').html('จำเป็นต้องกรอก');
+      } else {
+         // กรอกข้อมูลเข้ามา
+         $(".chk_name").hide();
+         $(".chk_name").removeClass("text-help");
+      }
+
+      var title = 'Edit Staff';
+      if (errortext) {
+         // แจ้ง error
+         new PNotify({
+            title: title + ' Error',
+            text: errortext,
+            modules: {
+               Animate: {
+                  animate: true,
+                  inClass: 'zoomInLeft',
+                  outClass: 'zoomOutRight'
+               }
+            }
+         });
+
+         return false;
+      } else {
+
+
+         console.log("SUBMIT" + '/api/member/staff_id/' + staffid_editing);
+         var postdata = {staff_id: staffid_editing, staff_displayname: displayname, staff_groupid: group, staff_per_id: permission, staff_route_id: route, staff_mobile: mobile, staff_description: description, staff_status: status};
+
+         console.log(postdata);
+         $.post('/api/member/staff_id/' + staffid_editing, postdata).done(function (data) {
+            //  แจ้งบันทึกสำเร็จ
+            new PNotify({
+               title: title + ' Success',
+               text: 'บันทึกข้อมูลสำเร็จ',
+               type: 'success'
+            });
+            console.log("SUBMIT data " + data);
+         });
+      }
+
+      console.log("return false");
+      return false;
+   });
+
+</script>

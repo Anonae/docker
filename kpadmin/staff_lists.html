@@ -1,0 +1,265 @@
+<!-- Start Content -->
+
+<!--start Breadcrumb-->
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Staffs</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Staff <b>Lists</b></h2>
+      </div><!--/col-->
+   </div><!--/content-title-->
+</div><!--/row-->
+
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">
+               แสดงรายชื่อ เจ้าหน้าที่เข้าใช้งาน ทั้งหมด <b class="text-green" id="total_item"></b> รายชื่อ
+
+            </p>
+            <div class="nav navbar-right">
+<!--               <a href="/cpanel/staff/add" id="btn_user_add" class=" alink btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i> Add New User</a>-->
+            </div>
+         </div><!--/x_title-->
+
+         <div class="x_content">
+
+            <div class="dataTables_wrapper">
+               <form id="filterForm" method="GET" class="form form-group" style="margin-bottom:6px;" onsubmit="return filterFormsubmit_staff()">
+
+                  <div class="top">
+                     <div class="dataTables_filter">
+                        <label>ค้นหา
+                           <input type="text" id="search_staff" name="search" class="form-control input-sm autoFilter"  >
+                        </label>
+                     </div>
+                     <div class="dataTables_length div_style_ledt" >
+                        <label>เลือกสิทธิ
+                           <select name="permisid" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                              <option value="" selected="">...</option>
+                              <option value="2">Administrator</option>
+                              <option value="3">Monitor</option>
+                              <option value="11">Sales Officer</option>
+                              <option value="12">VanSale Officer</option>
+                           </select>
+                        </label>
+                     </div>
+
+
+                     <div class="dataTables_length">
+                        <label>Record/Page
+                           <select name="display" class="form-control input-sm autoFilter" onchange="this.form.submit()">
+                              <option value="10">10</option>
+                              <option value="25" selected="">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                              <option value="1000">1000</option>
+                           </select>
+                        </label>
+                     </div>
+
+                     <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+
+                        </ul>
+                     </div>
+
+                  </div>
+               </form>
+            </div>
+
+            <table class="table table-striped table-bordered table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+               <thead>
+                  <tr>
+                     <th rowspan="1">#</th>
+                     <th rowspan="1">Staff Name</th>
+                     <th rowspan="1">Permission</th>
+                     <th rowspan="1">Route</th>
+                     <th rowspan="1">Mobile</th>
+                     <th rowspan="1">Description</th>
+                     <th rowspan="1">Group</th>
+                     <th rowspan="1">Status</th>
+                     <th rowspan="1">Last Update</th>
+                     <th class="text-center">Action</th>
+                  </tr>
+               </thead>
+
+               <tbody id='mytable'>
+                  <tr class='row_tablecontent' style='display:none'>
+
+                     <td class="ordinal staff_id"><small>2</small></td>
+                     <td>
+                        <div class="staff_img_profile">
+                           <img src="" class=" staff_picture" style=" width:40px; border-radius:100%; margin-right:5px;">
+                           <a href="#" class="staff_edit_link"><b class="b500 staff_name">staff name</b></a>
+                        </div> <!-- // show img -->
+                     </td>
+
+                     <td>
+                        <b class="staff_per_name">Permission Name </b>
+                        <div style="color:#aaa;">
+                           <span style="color:#ddd;" class="staff_per_id"></span>
+                           <span class="staff_per_description"> Permission Description </span>
+                        </div>
+                     </td>
+
+                     <td>
+                        <span class="staff_route_id">ยังไม่ระบุ</span>
+                        <span class="staff_route_name"> Route Name</span>
+                     </td>
+                     <td class="staff_mobile">mobile</td>
+                     <td class="staff_description" >ยังไม่ระบุ</td>
+                     <td>
+                        <i class="staff_groupid" style="color:#ddd;">ยังไม่ระบุ</i>
+                     </td>
+                     <td>
+                        <i class="staff_status" style="color:#ddd;">Status</i>
+                     </td>
+
+                     <td class="staff_lastupdate">Last Update</td>
+                     <td class="text-center">
+                        <button class="btn btn-silver btn-xs staff_edit_link" title="edit" href="#"><i class="fa fa-fw fa-pencil"></i></button>
+                     </td>
+
+                  </tr>
+               </tbody>
+            </table>
+
+
+
+            <div class="dataTables_wrapper">
+               <div class="bottom">
+                  <div class="dataTables_paginate paging_simple_numbers">
+                     <ul class="pagination">
+                        <!-- Previous -->
+                        <!-- First -->
+
+                        <!-- Main Loop -->
+
+                        <!-- Last -->
+                        <!-- Next -->
+                     </ul>
+
+                  </div>
+
+                  <div class="dataTables_info">Showing 1 to 17 of 17 entries</div>
+               </div>
+            </div>
+
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<!-- // End Content on PAGE ///////////////// -->
+<script>
+   var template_of_testtable = $('#mytable').first().html();
+
+   //console.log(template_of_testtable);
+   var maintable = $('#mytable').first();
+   //console.log(maintable.html());
+
+   function filterFormsubmit_staff() {
+
+      //alert($('#search_route').val());
+      $('#mytable').first().html(template_of_testtable);
+
+      if ($('#search_staff').val()) {
+         showstaff_list($('#search_staff').val());
+         console.log('can sent value to function', $('#search_staff').val());
+         return false;
+
+      } else {
+         showstaff_list('');
+         return false;
+
+      }
+      return false;
+
+   }
+   function showstaff_list(searchstr) {
+      if (searchstr) {
+         var parth = '/api/member/stafflist/search/' + searchstr;
+      } else {
+         var parth = '/api/member/stafflist/';
+      }
+      $.get(parth, function (objdata) {
+         console.log(objdata);
+         $("#total_item").text(objdata.length);
+         for (var x = 0; x < objdata.length; x++) {
+            var TR = tablerow(maintable, 'staff', objdata[x], template_of_testtable);
+            //  console.log(TR.html());
+
+            // กรณีมีปุ่ม Edit / Show
+            TR.find('.staff_edit_link').attr('href', '/cpanel/staff/edit?staffid=' + objdata[x]._id);
+
+            if (objdata[x].picture == "") {
+               //   TR.find('.staff_picture').empty();
+               TR.find('.staff_picture').empty();
+            } else {
+               TR.find('.staff_picture').text(objdata[x].picture);
+            }
+
+            // Permission
+            if (objdata[x].per_id == 0) {
+               TR.find('.staff_per_id').html("");
+               TR.find('.staff_per_name').html('ยังไม่ระบุ').attr('style', 'font-weight:300');
+               TR.find('.staff_per_description').html("");
+            } else {
+               TR.find('.staff_per_name').html(objdata[x].per_id.name);
+               TR.find('.staff_per_id').html('(' + objdata[x].per_id._id + ')');
+               TR.find('.staff_per_description').html(objdata[x].per_id.description);
+            }
+
+            // Route เส้นทาง
+            if (objdata[x].route_id == 0) {
+               TR.find('.staff_route_id').html("");
+               TR.find('.staff_route_name').html('ยังไม่ระบุ').attr('style', 'font-weight:300');
+            } else {
+               TR.find('.staff_route_id').html(objdata[x].route_id._id + ') ').attr("style", "margin-right: 5px;");
+               TR.find('.staff_route_name').html(' ' + objdata[x].route_id.name + ' - ' + objdata[x].route_id.area);
+            }
+            if (objdata[x].status == 1) {
+               TR.find('.staff_status').text('เปิดการใช้งาน').attr('style', 'color : green');
+            }
+            if (objdata[x].status == 0) {
+               TR.find('.staff_status').text('ปิดการใช้งาน').attr('style', 'color : orange');
+            }
+            if (objdata[x].status == 99) {
+               TR.find('.staff_status').text('รอการอนุมัติ').attr('style', 'color : blue');
+            }
+            if (objdata[x].status == 98) {
+               TR.find('.staff_status').text('ไม่ได้รับการอนุมัติ').attr('style', 'color : red');
+            }
+
+
+            TR.show();
+         }
+
+         console.log("SET THE LINK");
+         $('.staff_edit_link').on('click', function (obj) {
+            console.log($(obj).attr('href'));
+            go2View($(obj.currentTarget).attr('href'), 'Editing Product');
+            return false;
+         });
+      });
+   }
+   showstaff_list('');
+   $('.alink').off("click");
+   $('.alink').on('click', function (obj) {  // ตัวอย่าง <a href="cpanel/staff/qrcode" class='alink'>QR Code</a>
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+
+</script>

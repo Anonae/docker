@@ -1,0 +1,353 @@
+<!--start Breadcrumb-->
+<style>
+   .text-help { font-size: 11px; font-weight: 400; color: #ff5722; }
+
+</style>
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb" >
+      <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="kiosk_lists.php"><?=$pageTitle?></a></li>
+      <li class="breadcrumb-item"><a href="kiosk_view.php?kioskid=<?=$_GET['kioskid']?>">Kiosk <?=($loadKOS->tcpcode)?$loadKOS->tcpcode:$loadKOS->id;?></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Info</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Kiosk <b>Editor</b></h2>
+      </div><!--/col-->
+      <div class="col-md-4 col-sm-4 col-xs-12">
+         <div class="dataTables_wrapper">
+            <!-- <form method="GET">
+               <div class="dataTables_custom" style="width:100%;">
+                  <div class="dateMonthPicker">
+                     <div class="input-prepend input-group">
+                        <span class="add-on input-group-addon"><i class="fa fa-fw fa-building-o"></i></span>
+                        <select id="kioskid" name="kioskid" class="form-control input-sm selectpicker selectCustomW100" style="width:100%;" onchange="this.form.submit()">
+
+                           <option data-content="" value=""></option>
+
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </form>  -->
+         </div>
+      </div><!--/col-->
+   </div><!--/content-title-->
+</div><!--/row-->
+
+<div class="row" id='kiosk_edit_page'>
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">หน้าแก้ไข ตู้กดน้ำ หมายเลข <b> </b> <span>(<span class="kiosk_tcpcode"></span> | <span class="kiosk_name"></span>)</span></p>
+         </div><!--/x_title-->
+
+
+         <div class="x_content">
+            <form id="editKiosk" class="form-horizontal form-label-left" method="POST" data-parsley-validate="" novalidate>
+               <input type="hidden" name="action" value="editKiosk">
+               <!-- <input id="bywho" name="bywho" value="<?=$_SESSION['name']?>" style="display:none;" />
+               <input id="when" name="when" value="<?=date('Y-m-d H:i:s')?>" style="display:none;" />  --> 
+               <div class="row">
+                  <div class="col col-md-3 col-sm-4 col-xs-12">
+                    	<div class="form-group" style="text-align:center;">
+
+                        <!--   <img id="preview" src="" class="img-responsive" style="max-height:300px; margin:0 auto;">  -->
+
+                        <img id="preview" src="" class="img-responsive kiosk_image" style="max-height:300px; margin:0 auto;" title="Kiosk Image">
+
+                        <div style=" width:100%; margin-top:30px; padding:10px; border:1px solid #e6ecf5; border-radius: 2px; overflow:hidden;">
+                           <input type="file" name="previewimage" id="previewimage" onchange="previewIMG()">
+                           <input id="image" name="image" value=""  style="display:none;" />
+                        </div>
+                     </div>
+                  </div><!--/col-->
+                  <div class="col col-md-9 col-sm-8 col-xs-12">
+                    	<div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Kiosk Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <!--                           <input class="form-control" type="text" id="name" name="name" value="<?=$loadKOS->name?>" />-->
+                           <input class="form-control kiosk_name" type="text"  value="" required="required" id="kioskname" name="kioskname" />
+                           <span class="text-help  chk_name"></span>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">TCP Code</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                           <input class="form-control kiosk_tcpcode" type="text" id="tcpcode" name="tcpcode" value="" />
+                        </div>
+                     </div>
+                    	<div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" style="color:#111;"><span class="required">*</span> Board Serial</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input class="form-control kiosk_serial" type="text" id="serial" name="serial" value="0" required="required" style="border-color:#333; background-color:rgba(0,0,0,0.15);">
+                            
+                        <!--    <input class="form-control kiosk_serial" type="text" id="serial" name="serial" value="" required="required" style="border-color:#333; background-color:rgba(0,0,0,0.15) " disabled/>
+                        -->
+                           <p class="help-block" style="font-weight:600; color:#ff8c00; border-left:3px solid #ddd; padding-left:7px;">เลขรหัสเฉพาะของบอร์ดควบคุมระบบภายในตู้</p>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Model</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="select_kioskmodel" name="select_kioskmodel" class="form-control input-sm selectpicker selectCustomW100">
+
+                              <option data-content="" value=""></option>
+
+                           </select>
+                            <span class="text-help  chk_model"></span>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Route</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="select_route" name="select_route" class="form-control input-sm selectpicker selectCustomW100">
+                              <option value="0">...</option>
+                           </select>
+                            <!-- <span class="text-help  chk_route">chk_route</span> -->
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <input class="form-control kiosk_location" type="text" id="location" name="location" value="" required="required" />
+                           <span class="text-help  chk_location"></span>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Latitude, Longitude</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                 <input class="form-control kiosk_latitude" type="text" id="gps_latitude" name="gps_latitude" value="" />
+                              </div>
+                              <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                 <input class="form-control kiosk_longitude" type="text" id="gps_longitude" name="gps_longitude" value="" />
+                              </div>
+                           </div>
+                           <div style=" margin-bottom:10px;">
+                              <a id="map_location" href="#" target="_blank" class="btn btn-sm btn-info" style="font-size:13px;"><i class="fa fa-fw fa-external-link"></i> Google Map</a>
+                              <span style=" margin-left:10px; line-height:30px; font-size:15px; vertical-align:text-top;">
+                                 <b style="font-weight:400;"><span class="kiosk_latitude"></span>,<span class="kiosk_longitude"></span> </b>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <textarea class="resizable_textarea form-control kiosk_description" rows="3" id="description" name="description"></textarea>
+                        </div>
+                     </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <select id="status" id="status" class="kiosk_status form-control input-sm selectpicker selectCustomW100">                                
+                                <option value="1">เปิดการใช้งาน</option>
+                                <option value="0">ปิดการใช้งาน</option>
+                            </select>
+
+                        </div>
+                     </div>
+                  </div><!--/col-->
+               </div><!--/row-->
+
+               <div class="row">
+                  <div class="ln_solid"></div>
+                  <div class="col-md-3 col-sm-6 col-xs-12"><a href="/cpanel/kiosk/list" class="alink btn btn-default btn-lg btn-block">Back</a></div>
+                  <div class="col-md-9 col-sm-6 col-xs-12"><button class="btn btn-primary btn-lg btn-block "  type="submit" >Submit Edited</button></div>
+               </div><!--/row-->
+            </form>
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->
+
+
+<script>
+   $('.alink').on('click',function(obj){ 
+        go2View($(obj.target).attr('href'),'Kapook Vending');
+        return false;
+    });
+
+    var kioskid_editing; // กำหนดตัวแปร ใช้ร่วมกันไว้ข้างนอก
+            
+    // 1. ถ้ามีหมวดสินค้าจากตารางอื่น ให้ทำก่อน 
+    function kiosk_showdata(kioskid){  
+         // Load Category มาก่อน
+         $.get('/api/member/kioskmodel_list',function(data){  // หยิบที่สร้างใน nodered มา
+              var seldata = '';  // ตั้งชื่อตัวแปรใหม่ ไปใช้กับ <select 
+              for(var x=0; x < data.length;x++){
+                  seldata +='<option value="' + data[x].id + '">' +'('+data[x].id+')  ' + data[x].model_name + '</option>';   
+              }
+              $('#select_kioskmodel').html(seldata);  // <select id ="select_category"
+              
+              kiosk_get(kioskid);  // ให้ไปทำ ฟังก์ชั่น kiosk_get ต่อ
+         });
+         
+        $.get('/api/member/routelist', function (data) {
+         //console.log(data);
+         var seldata2 = '';
+         for (var i = 0; i < data.length; i++) {
+            seldata2 += '<option value="' + data[i].id + '">' + data[i].name + ' - ' + data[i].area + '</option>';
+         }
+         $('#select_route').html(seldata2);
+         kiosk_get(kioskid);
+      });
+         
+    }
+    
+    // 2. ทำข้อ 1 เสร็จ แสดงข้อมูลตาราง product รับค่า kioskid
+     var totalfinish = 0;  // ป้องกันการทำซ้ำ
+     
+    function kiosk_get(kioskid){
+            totalfinish++;
+            if (totalfinish < 2)
+            return; // ให้ทำแค่ 1 รอบ
+     
+            
+            $.get('/api/member/kioskid/'+kioskid, function(data){       
+            kioskid_editing = kioskid;                       
+           
+            var objjquery = $('#kiosk_edit_page');  //  <div class="row kiosk_edit_page"> แก้ไขข้อมูล
+            setdatabyclass(objjquery, 'kiosk', data);  // product ชื่อเรียกนำหน้านำไปใช้คือ  <div class="kiosk_name"  
+            var map = 'https://www.google.co.th/maps/search/' + data.latitude + ',' + data.longitude;
+            
+            $("#map_location").attr("href", map);
+            console.log('viewing data');  
+            
+            
+            // จัดการ style Remove Class
+            if($('#kioskname').val()) { 
+                $(".chk_name").removeClass('text-help');
+            }
+           
+            if($('#select_kioskmodel').val()) { 
+                $(".chk_model").removeClass('text-help');
+            }                       
+            
+             if($('#location').val()) {
+                $(".chk_location").removeClass('text-help');
+            }
+        });    
+    }
+    
+
+    //Upload Image
+    /*
+    var previewIMG = function() {
+            var photo = document.getElementById("previewimage");
+            var files = photo.files;
+            for (var i = 0; i < files.length; i++) { var file = files[i]; }      
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                    //console.log('BASE64 RESULT = ', reader.result)
+                    preview.src = reader.result; tempimage=reader.result;
+                    $("#productimage").val(tempimage);
+            }
+            reader.readAsDataURL(file);
+    }
+    
+    */
+   
+   
+    $('#editKiosk').on('submit',function(){  // ใช้กับ <form id="editPRD"
+           var errortext;
+           // กำหนดตัวแปรแต่ละตัว ที่มาจากฟอร์ม 
+           var kioskname        = $('#kioskname').val(); 
+           var tcpcode          = $('#tcpcode').val(); 
+           var serial           = $('#serial').val(); 
+           var kioskmodel       = $('#select_kioskmodel').val(); 
+           var select_route     = $('#select_route').val(); 
+           var location         = $('#location').val();
+           var gps_latitude     = $('#gps_latitude').val(); 
+           var gps_longitude    = $('#gps_longitude').val(); 
+           var description      = $('#description').val(); 
+           var status           = $('#status').val();                      
+            
+            
+            if(kioskname ==''){
+                // ค่าว่าง
+                errortext = 'กรุณากรอก Kiosk Name';
+                $(".chk_name").show();
+                $(".chk_name").addClass("text-help"); 
+                $('.chk_name').html('จำเป็นต้องกรอก');               
+            } else {
+                // กรอกข้อมูลเข้ามา
+                $(".chk_name").hide();
+                $(".chk_name").removeClass("text-help"); 
+            }  
+            
+            if(kioskmodel =='') {
+                errortext = 'กรุณากรอก Model';
+                $(".chk_model").show();
+                $(".chk_model").addClass("text-help"); 
+                $('.chk_model').html('จำเป็นต้องกรอก');  
+            } else {
+                $(".chk_model").hide();
+                $(".chk_model").removeClass("text-help"); 
+            }
+            
+            if(location =='') {
+                errortext = 'กรุณากรอก Location';
+                $(".chk_location").show();
+                $(".chk_location").addClass("text-help"); 
+                $('.chk_location').html('จำเป็นต้องกรอก');  
+            } else {
+                $(".chk_location").hide();
+                $(".chk_location").removeClass("text-help"); 
+            }
+                       
+
+            var title = 'Edit Kiosk'; 
+            if(errortext){
+                // แจ้ง error 
+                new PNotify({
+                    title: title+' Error',
+                    text: errortext,
+                    modules: {
+                      Animate: {
+                        animate: true,
+                        inClass: 'zoomInLeft',
+                          outClass: 'zoomOutRight'
+                        }
+                    }
+                });
+              
+                return false;
+            } else {
+               
+                                 
+                    console.log("SUBMIT" + '/api/member/kioskid/'+kioskid_editing); 
+                    var postdata = {kiosk_id:kioskid_editing, k_tcpcode :tcpcode, k_name : kioskname, k_serial : serial,k_modelid  : kioskmodel, k_routeid : select_route,  k_location : location,  k_latitude : gps_latitude, k_long: gps_longitude, k_description :description , k_status : status  };
+                   
+                   // console.log(postdata); 
+                    $.post('/api/member/kioskid/'+kioskid_editing,postdata).done(function(data) {                                 
+                            //  แจ้งบันทึกสำเร็จ
+                            new PNotify({
+                                title: title+' Success',
+                                text:  'บันทึกข้อมูลสำเร็จ',
+                                type: 'success'
+                            });
+                            console.log("SUBMIT data " + data); 
+                    });                
+            }        
+                            
+        console.log("return false");
+        return false;
+        
+    });
+   
+   
+   
+   
+
+</script>  

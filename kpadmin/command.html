@@ -1,0 +1,181 @@
+<!-- Start Content -->
+<!--start Breadcrumb-->
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="kiosk_lists.php">Command</a></li>
+      <li class="breadcrumb-item active">Kiosk 4152</li>
+      <li class="breadcrumb-item active" aria-current="page">Send Command</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        	<h2 style="margin-bottom:10px;"><b>Send Command</b></h2>
+         <h2>Kiosk <b>4152</b>
+         </h2>
+      </div><!--/col-->
+
+   </div><!--/content-title-->
+</div><!--/row-->
+
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel" >
+         <div class="x_content" >
+            <div class="dataTables_wrapper ">
+               <form id="filterForm" method="GET" class="form form-group" style="margin-bottom:0;">
+                  <div class="top topSelect display_table_w100">
+                     <!--                     <div class="dataTables_length2 " >
+                                             <label>เลือกตู้กดน้ำ
+                                                <select name="kioskid" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                                                   <option value="" selected="">...</option>
+                                                   <option value="2323">2323 (กระทิงแดง สนามบอล)</option>
+                                                   <option value="4152" selected="">4152</option>
+                                                   <option value="4153">4153</option>
+                                                </select>
+                                             </label>
+                                          </div>-->
+                     <div class="dataTables_length" style="float:left;text-align:left;padding-left:0;padding-right:10px;width:fit-content;">
+                        <label>เลือกตู้กดน้ำ
+                           <select name="kioskid" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                              <option value="" selected="">...</option>
+                              <option value="2323">2323 (กระทิงแดง สนามบอล)</option>
+                              <option value="4152">4152 (ADVWS (Dev))</option>
+                              <option value="4153" selected="">4153 (FMT)</option>
+                              <option value="4154">4154 (ADVWS (White))</option>
+                           </select>
+                        </label>
+                     </div>
+                  </div> <!--/top-->
+               </form>
+            </div>
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+</div><!--/row-->
+
+
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">ชุดคำสั่งสำหรับเจ้าหน้าที่ดูแลระบบเท่านั้น</p>
+         </div><!--/x_title-->
+
+
+         <div class="x_content row">
+            <form method="post">
+               <input type="hidden" id="action" name="action" value="add">
+               <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+                  <button class="btn btn-silver btn-block btnCMD" type="submit" name="restart_app" value="restart_app" onclick="return confirm('ส่งเลือกคำสั่ง restart_app ?')">
+                     <div class="topic">สั่ง Restart App</div> restart_app
+                  </button>
+               </div> <!-- // restart_app -->
+
+               <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+                  <button class="btn btn-silver btn-block btnCMD" type="submit" name="get_last_apilog" value="get_last_apilog" onclick="return confirm('ส่งคำสั่ง get_last_apilog ?')">
+                     <div class="topic">ขอ Api Log ล่าสุด</div>get_last_apilog
+                  </button>
+               </div> <!-- get_last_apilog -->
+
+               <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+                  <button class="btn btn-silver btn-block btnCMD" type="submit" name="get_last_log" value="get_last_log" onclick="return confirm('ส่งคำสั่ง get_last_log ?')">
+                     <div class="topic">ขอ Log ล่าสุด</div>get_last_log
+                  </button>
+               </div> <!-- get_last_log -->
+
+               <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+                  <button class="btn btn-silver btn-block btnCMD" type="submit" name="get_last_buy" value="get_last_buy" onclick="return confirm('ส่งคำสั่ง get_last_buy ?')">
+                     <div class="topic">ขอ รายการขายล่าสุด</div>get_last_buy
+                  </button>
+               </div> <!-- get_last_buy -->
+
+               <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 10px;">
+                  <button class="btn btn-silver btn-block btnCMD" type="submit" name="closeservice" value="closeservice" onclick="return confirm('ส่งคำสั่ง closeservice ?')">
+                     <div class="topic">สั่งปิด App</div>closeservice
+                  </button>
+               </div>  <!-- closeservice -->
+            </form>
+
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+
+      <div class="row">
+         <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+               <div class="x_title">
+                  <p class="text-th">แสดงรายการ ส่งคำสั่ง ย้อนหลัง</p>
+                  <p class="text-help">
+                    	Kiosk ID : <b class="text-green"></b>
+                     รวมทั้งหมด <b class="text-green">0</b> รายการ
+                  </p>
+               </div><!--/x_title-->
+               <div class="x_content">
+                  <div class="dataTables_wrapper">
+                     <style type="text/css">
+                        .btnCMD { padding:10px 0 15px; font-size:15px; line-height:20px; font-weight:500; color:red !important; margin-bottom:15px;}
+                        .btnCMD>.topic { font-size:16px; padding:5px 0; font-weight:500; color:#000;}
+                        .cmd_show_sort { overflow: hidden; padding-bottom:10px; height:40px; width:300px; word-break:break-all;}
+                        .cmd_show_full { overflow: auto; height:auto; width:auto; word-break:break-all;}
+                        .badge-cmd { font-size:18px; font-weight:400; background-color:#26B99A; margin-top:-8px; padding: 5px 10px 8px;}
+                     </style>
+                     <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                           <tr>
+                              <th style="color:#bbb;"><small>#ID</small></th>
+                              <th>Input Time</th>
+                              <th>Last Update</th>
+                              <th class="text-left">Status</th>
+                              <th>Command</th>
+                              <th id="cmdDisplay">Return</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+
+                           <tr>
+                              <td>id</td>
+                              <td>input time</td>
+                              <td>last update</td>
+                              <td>
+                                 <span style="color:#26B99A ;"><i class="fa fa-fw fa-check-square-o"></i> Finished</span>
+                                 <!--status-->
+                              </td>
+                              <td>command</td>
+                              <td>return</td>
+                           </tr>
+                           <tr>
+                              <td>id</td>
+                              <td>input time</td>
+                              <td>last update</td>
+                              <td>
+                                 <span style="color:orange;"><i class="fa fa-fw fa-spinner fa-pulse"></i> Processing</span>
+                                 <!--status-->
+                              </td>
+                              <td>command</td>
+                              <td>return</td>
+                           </tr>
+
+                        </tbody>
+
+
+                        <!--                        <tbody>
+
+                                                   <tr><td colspan="7" class="noData"><i>No Data !!!</i></td></tr>
+                                                </tbody>-->
+
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> <!--// end row -->
+   </div>
+</div>
+
+<!-- // End Content on PAGE ////////////// -->

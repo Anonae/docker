@@ -1,0 +1,51 @@
+    <!-- Start Content -->
+     
+    <!--start Breadcrumb-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="cpanel/staff/lists" class="alink">Staff</a></li>
+            <li class="breadcrumb-item active" aria-current="page">QR Code</li>
+        </ol>
+    </nav>
+    <!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+	<div class="content-title">
+        <div class="col-md-7 col-sm-7 col-xs-12">
+            <h2>TCP Vending Machine's <b>QR Code</b></h2>
+        </div><!--/col-->  
+ 
+    </div><!--/content-title-->
+</div><!--/row--> 
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <p class="text-th">คิวอาร์โค้ด สำหรับเพิ่ม เจ้าหน้าที่เข้าใช้งาน</p>
+        </div><!--/x_title-->
+        <div class="x_content">
+            <div style=" padding:0; box-shadow:0 3px 12px rgba(0,0,0,0.1); width:fit-content; margin-bottom:30px;">
+            	    <img src="https://qr-official.line.me/sid/M/058dykqe.png" alt="Kapook Vending Machine's QR Code">
+            </div>
+            
+            <div style="font-size:18px; font-weight:600;">
+                <p><b>1.</b> สแกนรูป QR Code เพื่อ Add Line เพิ่มเพื่อน เข้าสู่มือถือ ของท่าน</p>
+                <p><b>2.</b> เมื่อเป็นเพื่อน @TCP Vending Machine แล้ว กรุณาพิมพ์ <b>ตัวเลข "1234" </b>เพื่อทำการ ลงทะเบียนพนักงาน อัตโนมัติ</p>
+            </div>
+        </div><!--/x_content-->
+    </div><!--/x_panel-->
+    </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->
+<script>
+   $('.alink').off('click');
+   $('.alink').on('click', function (obj) {  // ตัวอย่าง <a href="cpanel/staff/qrcode" class='alink'>QR Code</a>
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+</script>

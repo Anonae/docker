@@ -1,0 +1,289 @@
+<style>
+   .text-help { font-size: 11px; font-weight: 500; color: #ff5722; }
+</style>
+<!--start Breadcrumb-->
+
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb" >
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="cpanel/product/lists" class="alink">Products</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Product <b>Add</b></h2>
+      </div>
+      <!--/col-->
+   </div>
+   <!--/content-title-->
+</div>
+<!--/row-->
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">เพิ่มข้อมูล สินค้า <b class="text-green">ใหม่ !!!</b></p>
+         </div>
+         <!--/x_title-->
+
+         <div class="x_content">
+            <form id="addPRD" class="form-horizontal form-label-left" method="POST" data-parsley-validate="" novalidate>
+               <input type="hidden" name="action" value="addPRD">
+               <input id="bywho" name="bywho" value="" style="display:none;" />
+               <input id="when" name="when" value="2019-06-28 12:42:20" style="display:none;" />
+               <div class="row">
+                  <div class="col col-md-3 col-sm-4 col-xs-12">
+                     <div class="form-group" style="text-align:center;"> <img id="preview" src="" class="img-responsive product_product_image" style="max-height:300px; margin:0 auto;">
+                        <div style=" width:100%; margin-top:30px; padding:10px; border:1px solid #e6ecf5; border-radius: 2px; overflow:hidden;">
+                           <input type="file" name="previewimage" id="previewimage" >
+                           <input id="productimage" name="productimage" value=""  style="display:none;" />
+                        </div>
+                     </div>
+                  </div>
+                  <!--/col-->
+                  <div class="col col-md-9 col-sm-8 col-xs-12">
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> Product Name</label>
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12" type="text" id="productname" name="productname" value="" required />
+                           <span class="text-help  chk_name"></span>
+                        </div>
+                     </div>  <!--// Product Name -->
+
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required">*</span> SKU</label>
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                           <input class="form-control col-md-7 col-xs-12" type="text" id="sku" name="sku" value="" required />
+                           <span class="text-help chk_sku"></span>
+                        </div>
+                     </div>  <!--// SKU -->
+
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                           <span class="required">*</span> Price
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                           <input class="form-control product_init_price" type="number" id="price" name="price" value="" style="width:calc(100% - 40px); display:inline-block;" required="">
+
+                           <span class="unit">THB</span>
+                           <span class="chk_price text-help"></span>
+                        </div>
+                     </div> <!--// Price -->
+
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                           <span class="required">*</span> Category</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                           <select id="select_category" class="form-control input-sm selectpicker selectCustomW100">
+                           </select>
+                           <span class="text-help chk_category"></span>
+                        </div>
+                     </div> <!--// Category -->
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <textarea class="resizable_textarea form-control" rows="5" id="description" name="description"></textarea>
+                        </div>
+                     </div>   <!--// Description -->
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                           <select id="status" id="status" class="product_status form-control input-sm selectpicker selectCustomW100">
+                              <option value="1">เปิดการใช้งาน</option>
+                              <option value="0">ปิดการใช้งาน</option>
+                           </select>
+
+                        </div>
+                     </div>  <!--// Status -->
+
+                  </div>
+                  <!--/col-->
+               </div>
+               <!--/row-->
+
+               <div class="row">
+                  <div class="ln_solid"></div>
+
+
+                  <div class="col-md-3 col-sm-6 col-xs-12"><a href="/cpanel/product/lists" class="alink btn btn-default btn-lg btn-block">Back</a></div>
+                  <div class="col-md-9 col-sm-6 col-xs-12">
+                     <button class="btn btn-primary btn-lg btn-block" type="submit" >Add New Product</button>
+                  </div>
+               </div>
+               <!--/row-->
+
+            </form>
+         </div>
+         <!--/x_content-->
+      </div>
+      <!--/x_panel-->
+   </div>
+   <!--/col-md-12-->
+
+</div>
+<!--/row-->
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// -->
+
+<script>
+   var productimage_add_src;
+   $('.alink').on('click', function (obj) {
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+   /* ฟังก์ชั่นเกี่ยวกับรูปภาพ */
+   function readURL_add(input) {
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+
+         reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+            productimage_add_src = e.target.result;
+         }
+
+         reader.readAsDataURL(input.files[0]);
+      }
+   }
+
+   /* URL ของรูปภาพ */
+   $("#previewimage").change(function () {
+      readURL_add(this);
+   });
+
+   console.log("data");
+   // 1. ถ้ามีหมวดสินค้าจากตารางอื่น ให้ทำก่อน
+   //function product_showdata() {
+   // Load Category มาก่อน
+   $.get('/api/member/categorylist_status1', function (data) {  // หยิบที่สร้างใน nodered มา
+
+      var seldata = '';  // ตั้งชื่อตัวแปรใหม่ ไปใช้กับ <select
+      seldata += '<option value="' + 0 + '">...</option>';
+      for (var x = 0; x < data.length; x++) {
+         seldata += '<option value="' + data[x]._id + '">' + '(' + data[x]._id + ')  ' + data[x].name + '</option>';
+      }
+      $('#select_category').html(seldata);  // <select id ="select_category"
+
+      //  product_get(productid);  // ให้ไปทำ ฟังก์ชั่น product_get ต่อ
+   });
+   //}
+
+   // ปิดการ check
+   $(".chk_name").hide();
+   $(".chk_sku").hide();
+   $(".chk_price").hide();
+   $(".chk_category").hide();
+
+   $('#addPRD').on('submit', function () {  // ใช้กับ <form id="editPRD"
+      var errortext;
+      // กำหนดตัวแปรแต่ละตัว ที่มาจากฟอร์ม
+      var productname = $('#productname').val();
+      var sku = $('#sku').val();
+      var price = $('#price').val();
+      var category = $('#select_category').val();
+      var description = $('#description').val();
+      var status = $('#status').val();
+
+      if (productname == '') {
+         // ค่าว่าง
+         errortext = 'กรุณากรอก Product Name';
+         $(".chk_name").show();
+         $(".chk_name").addClass("text-help");
+         $('.chk_name').html('จำเป็นต้องกรอก');
+      } else {
+         // กรอกข้อมูลเข้ามา
+         $(".chk_name").hide();
+         $(".chk_name").removeClass("text-help");
+      }
+
+      if (sku == '') {
+         errortext = 'กรุณากรอก SKU';
+         $(".chk_sku").show();
+         $(".chk_sku").addClass("text-help");
+         $('.chk_sku').html('จำเป็นต้องกรอก');
+      } else {
+         $(".chk_sku").hide();
+         $(".chk_sku").removeClass("text-help");
+      }
+
+
+      if (price == '') {
+         errortext = 'กรุณากรอก Price';
+         $(".chk_price").show();
+         $(".chk_price").addClass("text-help");
+         $('.chk_price').html('จำเป็นต้องกรอก');
+      } else {
+         $(".chk_price").hide();
+         $(".chk_price").removeClass("text-help");
+      }
+
+      if (category == '') {
+         errortext = 'กรุณากรอก Category';
+         $(".chk_category").show();
+         $(".chk_category").addClass("text-help");
+         $('.chk_category').html('จำเป็นต้องกรอก');
+      } else {
+         $(".chk_category").hide();
+         $(".chk_category").removeClass("text-help");
+      }
+      if (productimage_add_src.length > '2097152') {
+         errortext = 'กรุณาเลือกรูปภาพขนาดไฟล์ที่อนุญาตน้อยกว่า 2 MB';
+      }
+
+
+
+      var title = 'Edit Product';
+      if (errortext) {
+         // แจ้ง error
+         new PNotify({
+            title: title + ' Error',
+            text: errortext,
+            modules: {
+               Animate: {
+                  animate: true,
+                  inClass: 'zoomInLeft',
+                  outClass: 'zoomOutRight'
+               }
+            }
+         });
+
+         return false;
+      } else {
+
+
+         console.log("SUBMIT" + '/api/member/product_add');
+         var postdata = {prd_name: productname, prd_sku: sku, prd_price: price, prd_category: category, prd_description: description, prd_status: status, prd_img: productimage_add_src};
+
+         console.log(postdata);
+         $.post('/api/member/product_add/', postdata).done(function (data) {
+            prd_img:productimage_add_src = null;
+            //  แจ้งบันทึกสำเร็จ
+            new PNotify({
+               title: title + ' Success',
+               text: 'บันทึกข้อมูลสำเร็จ',
+               type: 'success'
+            });
+            console.log("SUBMIT data " + data);
+         });
+      }
+
+      console.log("return false");
+      return false;
+
+   });
+
+
+
+
+</script>

@@ -1,0 +1,194 @@
+<!-- Start Content -->
+
+<!--start Breadcrumb-->
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="transaction_lists.php">Sales</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Slow Moving Kiosks</li>
+  </ol>
+</nav>
+<!--/end Breadcrumb--> 
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+
+<div class="row">
+  <div class="content-title">
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <h2>Slow Moving Kiosks <span style="font-size:15px;">on <b class="text-green">2019-06-01</b> to <b class="text-green">2019-06-30</b> </span> </h2>
+    </div>
+    <!--/col-->
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="dataTables_wrapper">
+        <div class="dataTables_custom" style=" width:100%;">
+          <div class="dateRangePicker topPageDisplay">
+            <div class="input-prepend input-group"> <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+              <input name="" id="dateRangeTCP" class="form-control mainDatePicker" value="" autocomplete="off">
+              <input class="form-control input-sm" style="left:34px;" id="datefromClone" value="2019-06-01">
+              <input class="form-control input-sm" style="right:0;" id="dateClone" value="2019-06-30">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/col--> 
+  </div>
+  <!--/content-title--> 
+</div>
+<!--/row-->
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel cards cardRank">
+      <div class="x_title">
+        <p class="text-th">แสดงตู้กดน้ำ ที่มียอดขาย ตามเงื่อนไข กำหนดราคา เรียงจากน้อยสุดก่อน</p>
+        <p class="text-help"> รายการขาย ตั้งแต่วันที่ <b class="text-green">2019-06-01</b> ถึง <b class="text-green">2019-06-30</b> รวมทั้งหมด <b class="text-green">102</b> รายการ </p>
+      </div>
+      <div class="x_content">
+        <div class="dataTables_wrapper">
+          <form id="filterForm" method="GET" class="form form-group" style="margin-bottom:0;">
+            <div class="top topSelect" style=" width:100%; display:table;">
+              <div class="dataTables_length div_style_ledt" >
+                <label>เลือกเจาะจงเฉพาะสินค้า
+                  <select name="productid" class="form-control input-sm autoFilter" onchange="this.form.submit()" style="width:auto;">
+                    <option value="" selected="">...</option>
+                    <option value="101">เอส โคล่า 250 ซีซี</option>
+                    <option value="102">เอส สตรอเบอร์รี่ 250 ซีซี</option>
+                    <option value="103">เนสกาแฟ เอ็กซ์ตร้า  180 ซีซี.</option>
+                    <option value="104">เนสกาแฟ ลาเต้  180 ซีซี.</option>
+                    <option value="105">นมถั่วเหลือง (ขิงผสมเม็ดแมงลัก) 180 มล.</option>
+                    <option value="106">นมถั่วเหลือง 180  มล.</option>
+                    <option value="107">น้ำมะพร้าวอ่อนพร้อมเนื้อ ชบา 230 ซีซี.</option>
+                    <option value="108">น้ำว่านหางจระเข้ ชบา 230 ซีซี.</option>
+                    <option value="109">น้ำนมถั่วเหลือง ยูเอฟซี (โฮมซอย) 300 ซีซี.</option>
+                    <option value="110">น้ำแร่ ฟริ้งค์ 300 ซีซี.</option>
+                    <option value="111">โค้ก (สลิม)  245  ซีซี.</option>
+                    <option value="112">เป็ปซี่  245 ซีซี.</option>
+                    <option value="113">อาร์ซีโคล่า 250 ซีซี.</option>
+                    <option value="114">น้ำแร่ เพอร์ร่า 500 ซีซี.</option>
+                    <option value="115">เนสกาแฟ เอสเปรสโซ่ โรสต์ 180 ซีซี.</option>
+                    <option value="116">กระทิงแดง 150 ซี.ซี. ลังกระดาษ</option>
+                    <option value="117">เรดดี้ 150 ซี.ซี.</option>
+                    <option value="118">สปอนเซอร์ ออริจินัล 325 ซี.ซี.T</option>
+                    <option value="119">เพียวริคุ มิกซ์ เบอร์รี่ 350 ซี.ซี.</option>
+                    <option value="120">แมนซั่ม 325 ซีซี.</option>
+                    <option value="121">เพียวริคุ คูล เก๊กฮวยขาว 350 ซีซี.</option>
+                    <option value="123">กระทิงแดง จีทู 140 ซีซี.</option>
+                    <option value="124">ริคุ ส้มยูสุ 350 ซีซี</option>
+                    <option value="125">ริคุ องุ่นเคียวโฮ 350 ซีซี.</option>
+                    <option value="126">เรดบูล เอ็กซ์ตร้า 170 ซี.ซี. กระป๋อง</option>
+                    <option value="127">กระทิงแดง ซิงค์ 145 ซีซี. (ขวดกลม)</option>
+                    <option value="128">กระทิงแดง 145 ซีซี.  (ขวดกลม)</option>
+                    <option value="129">กระทิงแดง เอบีซี 145 ซีซี. (ขวดกลม)</option>
+                    <option value="130">เพียวริคุ สตอเบอร์รี่ 280 ซีซี.</option>
+                    <option value="131">เพียวริคุ ลิ้นจี่ 350 ซีซี.</option>
+                    <option value="132">แมนซั่ม ฟรุตโซดา คอลลาเจน 325 ซีซี.</option>
+                    <option value="133">แมนซั่ม ฟรุตโซดา แอลกลูตาไธโอน 325 ซีซี.</option>
+                    <option value="134">สปอนเซอร์ แอคทีฟ 240 ซี.ซี.</option>
+                    <option value="135">สปอนเซอร์ บีเฟรช 240 ซี.ซี.</option>
+                    <option value="141">ปีโป้เชค รสองุ่น 230 ซีซี.</option>
+                    <option value="142">น้ำแอปเปิ้ล ชบา 230 ซีซี.</option>
+                    <option value="143">โกปิโก้คอฟฟี่ 240 ซีซี.</option>
+                    <option value="144">น้ำส้ม ดีโด้ 450 ซีซี.</option>
+                    <option value="145">น้ำองุ่นขาวกลิ่นนมเปรี้ยว (มิกกุ) 300 ซีซี.</option>
+                    <option value="146">กาแฟโกปิโก้ รสเข้ม 240 ซีซี.</option>
+                    <option value="147">กาแฟโกปิโก้ รสกลมกล่อม 240 ซีซี.</option>
+                    <option value="148">เป๊ปซี่แมกซ์ 245 ซีซี</option>
+                    <option value="149">ชเวปส์มะนาวโซดา 330 ซีซี</option>
+                    <option value="150">แฟนต้า น้ำส้มแคน 325 มล.</option>
+                    <option value="151">สไปรท์ กระป๋อง 245 มล.</option>
+                  </select>
+                </label>
+              </div>
+              <div class="dataTables_custom">
+                <div class="dateRangePicker displayOnly form-inline"> <span>ตั้งแต่วันที่</span>
+                  <input class="form-control input-sm" name="datefrom" id="datefrom" value="2019-06-01" autocomplete="off">
+                  <span>ถึง</span>
+                  <input class="form-control input-sm" name="date" id="date" value="2019-06-30" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <!--/top.topSelect -->
+            <div class="top">
+              <div > <span style="display:inline-block; float:left; margin-right:5px; margin-top:5px; font-weight:700; color:#000; font-size:16px;">แสดงเฉพาะ ยอดขายรวม <span style="color:red;">ที่มีไม่ถึง</span></span>
+                <div class="input-group input-group-sm" style="width:250px; margin-bottom:0;">
+                  <input type="number" name="lowlimit" class="form-control input-sm" value="" style="border-color: #ddd; height:32px; text-align:right; padding: 0; font-size: 18px; line-height: 32px;" min="0" step="1">
+                  <label class="input-group-addon" style="border-left:none; padding-top: 7px; font-size: 13px; line-height:18px;">บาท</label>
+                  <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default btn-primary" style="height:32px; font-size:13px; font-weight:400; padding-top: 7px; ">ตรวจสอบ</button>
+                  </span> </div>
+              </div>
+            </div>
+            <!--/top-->
+          </form>
+        </div>
+      </div>
+      <!--/x_content--> 
+    </div>
+    <!--/x_panel--> 
+  </div>
+  <!--/col-md-12--> 
+</div>
+<!--/row-->
+
+<div class="row"> 
+  <!--Daily Details-->
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <h3 class="text-red">ออกแบบแล้ว </h3>
+    <div class="x_panel cards cardRank">
+      <div class="x_content">
+          <style type="text/css"> 
+            .tableDateDetails tr.disabled { filter: grayscale(1); opacity:0.3;}
+            .tableDateDetails tr.disabled:hover { background-color:inherit;}
+            .tableDateDetails .unit { font-size:11px; font-weight:300; color:#ccc; padding-left:3px;} 
+            .border-grey { border-left:1px solid #ddd }
+            .f-w-700 { font-weight: 700; }
+        </style>
+        <table class="table table-hover tableDateDetails">
+          <thead>
+            <tr>
+               <th class="text-left">หมายเลขตู้กดน้ำ</th>
+              <th class="text-left border-grey">เส้นทางเดินรถ</th>
+              <th class="text-left" >ครอบคลุมบริเวณ</th>
+              <th class="text-right border-grey">ยอดขายรวม</th>
+              <th class="text-right">คิดเป็น %</th>
+              <th class="text-right border-grey">ทำรายการทั้งหมด</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+        
+          <tr id="salesTR_2323" >
+            <td class="text-left">
+                <b style="font-weight:500; color:#000;">2323</b> 
+                <span>( กระทิงแดง สนามบอล )</span>
+            </td>
+            <td class="border-grey"></td>
+            <td style=""></td>
+            <td class="text-right border-grey f-w-700" style="color:#26B99A;">
+                <span style=" ">1,140</span> <span class="unit">THB</span>
+            </td>
+            <td>100.00 %</td>
+            <td class="text-right border-grey f-w-700">
+                <a href="transaction_lists.php?kioskid=2323&amp;datefrom=2019-06-01&amp;date=2019-06-30"> 
+                    <span style=" ">102</span> <span class="unit">Record</span> 
+                </a>
+            </td>
+          </tr>  <!--/ ออกแบบแล้ว -->  
+          
+          
+          </tbody>
+          
+        </table>
+      </div>
+      <!--/x_content--> 
+    </div>
+    <!--/x_panel--> 
+  </div>
+  <!--/col--> 
+</div>
+<!--/row--> 
+
+<!-- // End Content on PAGE /////////////////////////////////////////////////////// --> 
+

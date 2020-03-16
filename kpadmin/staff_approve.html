@@ -1,0 +1,341 @@
+<!-- Start Content -->
+
+<!--start Breadcrumb-->
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="cpanel/home" class="alink">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Staff Approve</li>
+   </ol>
+</nav>
+<!--/end Breadcrumb-->
+
+<!-- // Start Content on PAGE /////////////////////////////////////////////////////// -->
+<div class="row">
+   <div class="content-title">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+         <h2>Staff <b>Approve</b></h2>
+      </div><!--/col-->
+   </div><!--/content-title-->
+</div><!--/row-->
+
+
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+         <div class="x_title">
+            <p class="text-th">แสดงรายชื่อ ผู้สมัครผ่านการสแกน Line QR Code ทั้งหมด <b class="text-green" id="total_item">0</b> รายชื่อ</p>
+            <!--<div class="nav navbar-right"><a href="user_add.php" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i> Add New User</a></div>-->
+         </div><!--/x_title-->
+         <div class="x_content">
+
+            <div class="dataTables_wrapper">
+               <form id="filterForm" method="GET" class="form form-group" style="margin-bottom:6px;" onsubmit="return filterFormsubmit_staff_ap()">
+
+                  <div class="top">
+                     <div class="dataTables_filter">
+                        <label>Search
+                           <input type="text" id="search_staff_app" name="search" class="form-control input-sm autoFilter" >
+                        </label>
+                     </div>
+
+
+                     <div class="dataTables_length">
+                        <label>Record/Page
+                           <select name="display" class="form-control input-sm autoFilter" onchange="this.form.submit()">
+                              <option value="10">10</option>
+                              <option value="25" selected="">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                              <option value="1000">1000</option>
+                           </select>
+                        </label>
+                     </div>
+
+                     <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                           <!-- Previous -->
+                           <!-- First -->
+
+                           <!-- Main Loop -->
+
+                           <!-- Last -->
+                           <!-- Next -->
+                        </ul>
+                     </div>
+
+                  </div>
+               </form>
+            </div>
+
+            <style type="text/css">
+               .gridrow { padding:10px 5px; border-top:1px solid #eee; border-bottom:1px solid #eee;}
+               .gridrow .griditem { float:left; width:calc(20% - 10px); margin:0 5px; border:1px solid #ddd; border-radius: 12px 0 0 0;}
+               .gridrow .picture { position:relative; background-position:center center; background-repeat:no-repeat; background-size:cover; border-radius: 12px 0 0 0;}
+               .gridrow .ordinal { position:absolute; top:-3px; right:5px; z-index:9;
+                                   background-color:rgba(115,135,156); color:#fff; line-height:25px; text-align:right; padding:0 5px;
+                                   box-shadow:1px 0px 1px rgba(0,0,0,0.15); }
+               .gridrow .createon { position:absolute; bottom:5px; left:0; z-index:8; font-size:11px;
+                                    background-color:rgba(115,135,156,0.3); color:#fff; line-height:20px; width:fit-content; text-align:left; padding:0 5px; }
+               .gridrow .profile ul { padding:10px 10px 0; margin:0}
+               .gridrow .profile ul li { min-height:25px;}
+               .gridrow .profile .topic { color:#aaa; font-size:13px; font-weight:300; line-height:13px; min-height:13px;}
+               .gridrow .profile .name { color:#000; font-size:16px; border-bottom:1px dotted #ddd;}
+               .gridrow form .bootstrap-select .filter-option { font-size:13px;}
+               .gridrow .action .btn { font-size:13px;}
+               .gridrow .dropdown-toggle { border-color:#ddd;}
+               .gridrow label.topic { color:#aaa; font-size:13px; font-weight:300; line-height:13px; min-height:13px; padding-left:5px;}
+
+            </style>
+            <div class="gridrow">
+               <div class="row">
+                  <div id="mytable" >
+                     <div id="staffid_XX" class="griditem row_tablecontent" style="margin-top:20px;margin-bottom: 20px;display: none" >
+                        <!--<div class="picture" style=" background-image:url('https://profile.line-scdn.net/0hVpkesoIQCV9WHCWNaAV2CGpZBzIhMg8XLi5FOHofU2Z8fxsKbi4VbnpOUDx8KE1dOX1DOXpLUz8v')">-->
+                        <div class="picture" >
+                           <div class="ordinal staffAp_id"><small>id</small></div>
+                           <div class="createon staffAp_lastupdate">lastupdate</div>
+                        </div>
+                        <div class="profile">
+                           <div class="text-center">
+                              <img style="width:90%; border-radius:100%;margin:5%" src="https://profile.line-scdn.net/0hVpkesoIQCV9WHCWNaAV2CGpZBzIhMg8XLi5FOHofU2Z8fxsKbi4VbnpOUDx8KE1dOX1DOXpLUz8v" />
+                              <!--                           <div  style="background-color:#eee;border:#0062cc 3px solid;width: 100%px;height:189.316px;margin:15px;border-radius: 94.658px">Img</div>-->
+                           </div>
+                           <ul class="list-unstyled">
+                              <li class="topic">ชื่อผู้ลงทะเบียน</li>
+                              <li class="name"><b class="b500 staffAp_name">staff name</b> (<span class="staffAp_id"></span>)</li>
+                           </ul>
+                        </div>
+
+                        <form style=" padding:5px; padding-bottom:10px;">
+                           <label class="topic">เลือกสิทธิเข้าใช้งาน</label>
+
+
+                           <select id="select_permission"  name="permisid" class="form-control input-sm selectpicker selectCustomW100 peridSelected staffAp_per_id" style="width:100%;">
+                              <!--<option value="0" selected>...</option>-->
+
+                           </select>
+
+                        </form>
+                        <div class="action" style="padding:5px 5px 0; border-top:1px dotted #ddd;">
+                           <a id="staffAp_accept" class=" btn btn-primary btn-sm staffAp_accept" >อนุมัติ</a>
+                           <a id="staffAp_cancle" class=" btn btn-danger btn-sm pull-right staffAp_cancle" style="margin-right:0;">ยกเลิก</a>
+
+                        </div>
+
+                     </div>
+
+                     <div class="gridrow-item" style="display:none"><h3><i>No Data !!!</i></h3></div>
+                  </div>
+               </div><!--/.row-->
+            </div><!--/.gridrow-->
+
+            <div class="dataTables_wrapper" style=" margin-top:10px;">
+               <div class="bottom">
+                  <div class="dataTables_paginate paging_simple_numbers">
+                     <ul class="pagination">
+                        <!-- Previous -->
+                        <!-- First -->
+
+                        <!-- Main Loop -->
+
+                        <!-- Last -->
+                        <!-- Next -->
+                     </ul>
+                  </div>
+
+                  <div class="dataTables_info">Showing 1 to 0 of 0 entries</div>
+               </div>
+            </div>
+
+         </div><!--/x_content-->
+      </div><!--/x_panel-->
+   </div><!--/col-md-12-->
+
+</div><!--/row-->
+
+<!-- // End Content on PAGE ////////// -->
+<script>
+   var template_of_testtable = $('#mytable').first().html();
+   var maintable = $('#mytable').first();
+
+
+   function filterFormsubmit_staff_ap() {
+
+      //alert($('#search_route').val());
+      $('#mytable').first().html(template_of_testtable);
+
+      if ($('#search_staff_app').val()) {
+         showstaff_ap_list($('#search_staff_app').val());
+         console.log('can sent value to function', $('#search_staff_app').val());
+         return false;
+
+      } else {
+         showstaff_ap_list('');
+         return false;
+
+      }
+      return false;
+
+   }
+   function showstaff_ap_list(searchstr) {
+      if (searchstr) {
+         var parth = '/api/member/staffapprove_list_status99/search/' + searchstr;
+      } else {
+         var parth = '/api/member/staffapprove_list_status99/';
+      }
+
+      $.get(parth, function (objdata) {
+         console.log(objdata);
+         $("#total_item").html(objdata.length);
+         //console.log('data status 99');
+         ///api/member/staff_approveid/:staffid
+
+         for (var x = 0; x < objdata.length; x++) {
+            var TR = tablerow(maintable, 'staffAp', objdata[x], template_of_testtable);
+            //console.log(TR.html());
+
+            // กรณีมีปุ่ม Edit / Show
+            //TR.find('.staffAp_edit_link').attr('id', objdata[x]._id);
+            // กรณีมีปุ่ม Edit / Show
+            //TR.find('.staffAp_edit_link').attr('href', '/cpanel/staff/archived_lists/staffid=' + objdata[x]._id);
+            TR.find('#staffAp_accept').attr('id', 'staffAp_accept_' + objdata[x]._id);
+            TR.find('#staffAp_cancle').attr('id', 'staffAp_cancle_' + objdata[x]._id);
+            TR.find('#select_permission').attr('id', 'select_permission_' + objdata[x]._id);
+            // กรณีมีปุ่ม Edit / Show
+
+
+            if (objdata[x].picture == "") {
+               //   TR.find('.staff_picture').empty();
+               TR.find('.staffAp_picture').empty();
+            } else {
+               TR.find('.staffAp_picture').text(objdata[x].picture);
+            }
+            var pertemp = 'select_permission_' + objdata[x]._id;
+            var acceptid = 'staffAp_accept_' + objdata[x]._id;
+            var cancleid = 'staffAp_cancle_' + objdata[x]._id;
+            var staffid = objdata[x]._id;
+            var selectedid = objdata[x].per_id._id;
+            select_permission(pertemp, selectedid);
+            action_button(acceptid, cancleid, staffid);
+            // Permission
+//         if (objdata[x].per_id == 0) {
+//            TR.find('.staffAp_per_id').html("");
+//            TR.find('.staffAp_per_name').html('ยังไม่ระบุ').attr('style', 'font-weight:300');
+//            TR.find('.staffAp_per_description').html("");
+//         } else {
+//            TR.find('.staffAp_per_name').html(objdata[x].per_id.name);
+//            TR.find('.staffAp_per_id').html('(' + objdata[x].per_id._id + ')');
+//            TR.find('.staffAp_per_description').html(objdata[x].per_id.description);
+//         }
+//
+//         if (objdata[x].route_id == 0) {
+//            TR.find('.staffAp_route_id').html("");
+//            TR.find('.staffAp_route_name').html('ยังไม่ระบุ').attr('style', 'font-weight:300');
+//         } else {
+//            TR.find('.staffAp_route_id').html(objdata[x].route_id._id + ') ').attr("style", "margin-right: 5px;");
+//            TR.find('.staffAp_route_name').html(' ' + objdata[x].route_id.name + ' - ' + objdata[x].route_id.area);
+//         }
+
+
+
+
+
+            /*
+             * $.get('/api/member/permissionlist_status1', function (data) {  // หยิบที่สร้างใน nodered มา
+
+             console.log('Permission ', data);
+             //  staffid_editing = staffid;
+             var seldata = ''; // ตั้งชื่อตัวแปรใหม่ ไปใช้กับ <select
+             for (var x = 0; x < data.length; x++) {
+             seldata += '<option value="' + data[x]._id + '">' + data[x].name + '</option>';
+             }
+             seldata += '<option value="' + 0 + '">...</option>';
+             //var id_rename = "select_permission_" + objdata[x]._id;
+             // console.log(objdata[x]._id);
+             $(".select_permission").html(seldata); // <select id ="select_category"
+
+             });
+             */
+
+
+
+            TR.show();
+         }
+         function select_permission(pertemp, selectedid) {
+            $.get('/api/member/permissionlist_status1', function (data) {  // หยิบที่สร้างใน nodered มา
+
+               var seldata = '';
+               for (var x = 0; x < data.length; x++
+                       ) {
+                  if (data[x]._id == selectedid) {
+                     seldata += '<option value="' + data[x]._id + '" selected>' + '(' + data[x]._id + ')  ' + data[x].name + '</option>';
+                  } else {
+                     seldata += '<option value="' + data[x]._id + '">' + '(' + data[x]._id + ')  ' + data[x].name + '</option>';
+                  }
+               }
+               seldata += '<option value="' + 0 + '">...</option>';
+               //console.log(pertemp, ' : ', selectedid);
+               $('#' + pertemp).html(seldata);
+               // $('#select_permission').html(seldata);
+
+               // product_get(productid);  // ให้ไปทำ ฟังก์ชั่น product_get ต่อ
+            });
+            //      console.log("SET THE LINK");
+
+
+         }
+
+
+         function action_button(acceptid, cancleid, staffid) {
+            $("#" + acceptid).on('click', function (obj) {
+               alert('อนุญาติการใช้งานของ id ' + staffid + 'แล้ว');
+               var staffid_editing = staffid;
+               console.log('get staff ' + staffid_editing);
+               var postdata = {staff_id: staffid_editing};
+               $.get('/api/member/staff_approveid/' + staffid_editing, postdata).done(function (data) {
+                  console.log('Update Status Success', data);
+               });
+//         $.get('/api/member/staff_approveid/' + id, function (data) {
+//            console.log('Retrieved Success', data);
+//         });
+               //window.location.href = '/cpanel/staff/approve';
+               window.location = "cpanel/staff/approve";
+               go2View($(obj.currentTarget).attr('href'), 'Staff Approve');
+               cosole.log('156');
+               return false;
+            });
+            $('#' + cancleid).on('click', function (obj) {
+               //console.log(cancleid);
+               alert('ยกเลิกการใช้งานของ id ' + staffid + 'แล้ว');
+               //console.log(obj);
+               var staffid_editing = staffid;
+               console.log('get staff ' + staffid_editing);
+               var postdata = {staff_id: staffid_editing};
+               $.get('/api/member/staff_archived/' + staffid_editing, postdata).done(function (data) {
+                  console.log('Update Status Success', data);
+               });
+//         $.get('/api/member/staff_approveid/' + id, function (data) {
+//            console.log('Retrieved Success', data);
+//         });
+//
+               //window.location.href = '/cpanel/staff/approve';
+               window.location = "cpanel/staff/approve";
+               go2View($(obj.currentTarget).attr('href'), 'Staff Approve');
+
+               cosole.log('156');
+               return false;
+            });
+
+         }
+
+      });
+
+   }
+   showstaff_ap_list('');
+   $('.alink').off("click");
+   $('.alink').on('click', function (obj) {  // ตัวอย่าง <a href="cpanel/staff/qrcode" class='alink'>QR Code</a>
+      go2View($(obj.target).attr('href'), 'Kapook Vending');
+      return false;
+   });
+
+</script>
